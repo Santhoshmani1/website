@@ -1,9 +1,15 @@
-
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Post from './pages/Post'
+import Blog from './pages/Blog'
 
  const App = () => {
   return (
     <>
-     <h1>React + Vite app</h1>
+      <Routes>
+        <Route path="/" element={<Home />} id="1"/>
+        <Route path="/blog" element={<Blog />} id="2" />
+      </Routes>
     </>
   );
 };
