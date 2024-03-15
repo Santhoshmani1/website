@@ -1,15 +1,17 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { HashLink as Link } from 'react-router-hash-link';
+import icon from "../assets/S.png"
 
 const navigationListItems = [
-  { label: 'Home', path: '/' },
+  { label: 'Home', path: '/#' },
   { label: 'Projects', path: '/#projects' },
-  { label : 'Blog', path : '/blog'},
+  { label : 'Blog', path : '/blog/#'},
   { label: 'Contact', path: '/#contact' },
 ];
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+
 
   return (
     <header className="bg-gray-50 shadow-md fixed w-full z-10">
@@ -17,6 +19,7 @@ const Header = () => {
         <div className="flex items-center justify-between">
           <div className="text-3xl font-bold text-gray-900" style={{fontFamily:"Montserrat"}}>
             <Link to="/" className="hover:text-blue-400 transition duration-200">
+              <img src={icon} alt="S icon" className='w-10 relative bottom-1 h-10 inline-block mx-2 rounded-lg'  />
               Santhosh Mani 
             </Link>
           </div>
@@ -38,6 +41,7 @@ const Header = () => {
                 <Link
                   to={item.path}
                   className="hover:underline transition duration-200 font-sans text-lg text-left hover:text-blue-600" style={{fontFamily: 'Montserrat'}}
+                  onClick={() => setIsOpen(false)}
                 >
                   {item.label}
                 </Link>
