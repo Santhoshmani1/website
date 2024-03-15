@@ -94,7 +94,7 @@ const projectsList = [
       {
         name: "Node JS",
         icon: <SiNodedotjs />,
-        color: "#3776AB" // JavaScript color
+        color: "green" // JavaScript color
       },
       {
         name: "JavaScript",
@@ -115,7 +115,7 @@ const projectsList = [
       {
         name: "Node JS",
         icon: <SiNodedotjs />,
-        color: "#3776AB"
+        color: "green"
       },
       {
         name: "JavaScript",
