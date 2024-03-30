@@ -7,7 +7,6 @@ import npmCliTour from "../assets/npm-cli-tour.png";
 import jwtGenKey from '../assets/JWT-gen-key.png'
 import SLRImg from "../assets/SLR.png";
 import SpaceContainer from "../components/SpaceContainer"
-import { useInView } from "react-intersection-observer";
 
 const projectCategories = ["All", "Web", "Machine learning", "npm packages"];
 const projectsList = [
