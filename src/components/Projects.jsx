@@ -1,14 +1,15 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { FaGithub } from "react-icons/fa";
-import { SiCss3, SiHtml5, SiJavascript, SiNodedotjs, SiNpm, SiNumpy, SiOpencv, SiPandas, SiPython, SiReact, SiTailwindcss, SiTensorflow } from "react-icons/si";
+import { SiCss3, SiHtml5, SiJavascript, SiNodedotjs, SiNpm, SiOpencv, SiPython, SiReact, SiTailwindcss, SiTensorflow } from "react-icons/si";
 import InferhubImg from "../assets/inferhub.png";
 import ClearspaceImg from "../assets/clearspace.png";
 import npmCliTour from "../assets/npm-cli-tour.png";
 import jwtGenKey from '../assets/JWT-gen-key.png'
 import SLRImg from "../assets/SLR.png";
+import SpaceContainer from "../components/SpaceContainer"
+import { useInView } from "react-intersection-observer";
 
 const projectCategories = ["All", "Web", "Machine learning", "npm packages"];
-
 const projectsList = [
   {
     id: 1,
@@ -128,14 +129,27 @@ const projectsList = [
   }
 ];
 
+
 const Projects = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
-  
+  // const [inViewStates, setInViewStates] = useState([]);
+  // const projectRefs = projectsList.map(() => useRef(null));
+  //   setInViewStates(projectRefs.map(ref => {
+  //     const { inView } = useInView({
+  //       threshold: 0.5,
+  //       delay: 300,
+  //       trackVisibility: true,
+  //       ref: ref.current
+  //     });
+
+  //     return inView;
+  //   }));
   return (
-    <div id="projects">
+    <section id="projects">
+      <SpaceContainer />
       <h2
-        className="text-4xl text-center leading-relaxed"
-        style={{ fontFamily: "Montserrat" }} id="projects"
+        className="text-4xl text-center m-2 leading-relaxed"
+        style={{ fontFamily: "Montserrat" }}
       >
         Projects
       </h2>
@@ -167,7 +181,7 @@ const Projects = () => {
             npmWebsite
           } = project;
           return (
-            <div key={id} className="py-4 px-4 border-2 border-blue-400 my-4 w-4/5  mx-auto sm:w-full rounded-2xl" style={{ fontFamily: "Montserrat" }}>
+            <div key={id} className="py-4 px-4 border-2 border-blue-800 my-4 w-4/5  mx-auto sm:w-full rounded-2xl" style={{ fontFamily: "Montserrat" }}>
               <h3 className="text-2xl font-bold p-2 text-center text-blue-600">{title}</h3>
               <div className="flex justify-between items-center flex-col sm:flex-row">
                 <img src={coverImage} alt={title + "image"} className="w-40 h-40 p-2 rounded-xl object-cover" />
@@ -175,7 +189,7 @@ const Projects = () => {
               </div>
               <div className="p-2 flex flex-row justify-center items-center flex-wrap">
                 {techStack.map((tech, index) => (
-                  <div className="border-2 border-zinc-600 m-2 p-2 rounded-xl text-center flex justify-center items-center text-sm" key={index}>
+                  <div className="border-2 skill-info m-2 px-4 py-2 rounded-xl text-center flex justify-center items-center text-sm" key={index}>
                     <span>{tech.name}</span>
                     <span className="inline-block px-4 text-xl" style={{ color: tech.color }} key={index}>{tech.icon}</span>
                   </div>
@@ -204,7 +218,7 @@ const Projects = () => {
           );
         })}
       </div>
-    </div>
+    </section>
   );
 };
 

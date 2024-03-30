@@ -30,9 +30,9 @@ const programmingLanguages = [
         color: "#069",
     },
     {
-        name:"Solidity",
-        icon :<SiSolidity />,
-        color:"black"
+        name: "Solidity",
+        icon: <SiSolidity />,
+        color: "black"
     }
 ];
 
@@ -53,9 +53,9 @@ const webTechnologies = [
         color: "black",
     },
     {
-        name:"MongoDB",
-        icon : <SiMongodb />,
-        color:"#00ff11"
+        name: "MongoDB",
+        icon: <SiMongodb />,
+        color: "#00ff11"
     },
     {
         name: "HTML",
@@ -71,7 +71,7 @@ const webTechnologies = [
 
 const Skills = () => {
     return (
-        <div className="skills-container my-2 py-4 px-2" style={{fontFamily:"Montserrat"}}>
+        <div className="skills-container my-2 py-10 px-2" style={{ fontFamily: "Montserrat" }} id="skills" >
             <h2 className="text-3xl text-center py-12 px-10  leading-relaxed font-bold">Skills</h2>
 
             <h3 className="text-xl font-bold text-center p-4 m-2">Programming languages</h3>
@@ -93,13 +93,12 @@ const Skills = () => {
             <h3 className="text-xl font-bold text-center p-4 m-2">Web technologies</h3>
             <div className="web-technologies-container flex justify-center items-center flex-wrap">
                 {webTechnologies.map((technology, index) => (
-                    <div key={index} className="skill px-4 py-2 text-lg flex items-center justify-center flex-col">
-                        <span
-                            className="techhnology-icon text-4xl m-auto text-center"
-                            style={{ color: technology.color }}
+                    <div key={index} className="skill px-4 py-2 text-xl flex items-center justify-center flex-col">
+                        <div
+                            className="techhnology-icon text-4xl m-auto text-center" style={{ color: technology.color }}
                         >
                             {technology.icon}
-                        </span>
+                        </div>
                         <p className="skill-name p-2">{technology.name}</p>
                     </div>
                 ))}
