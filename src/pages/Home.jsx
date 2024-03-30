@@ -1,29 +1,30 @@
 import Header from "../components/Header";
 import Skills from "../components/Skills"
 import Projects from "../components/Projects";
+import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import Contact from "../components/Contact";
 
 const Home = () => {
   return (
     <>
       <Header />
-      <div className="home-hero min-h-screen my-auto flex justify-center items-center" style={{ fontFamily: "Montserrat" }}>
+
+      <div className="home-hero min-h-screen my-auto flex justify-center items-center fadeIn" style={{ fontFamily: "Montserrat" }}>
         <div className="container mx-auto px-6 py-20 text-center">
           <h2 className="text-4xl font-bold text-center text-gray-800">
             Welcome to my portfolio{" "}
             <span className="animate-pulse">👋</span>
           </h2>
-          <div className="text-xl py-4 w-4/5 lg:w-1/2 sm:text-center text-center m-auto leading-relaxed text-gray-700">
-            <div className="mx-auto ml-4 md:text-center text-left">
+          <div className="text-lg py-4 w-4/5 lg:w-1/2 sm:text-center text-center m-auto leading-relaxed text-gray-700">
+            <div className="mx-auto ml-4 md:text-center sm:text-left text-center">
               My name is Santhosh mani. I am a second year engineering
-              undergraduate. I love building products on the web with Javascript.
+              undergraduate. I love building products on the web with Javascript, Node.js & React.js.
             </div>
             <div className="my-2 leading-relaxed md:text-center text-center">
               My interests lies in the fields of{" "}
-              <div className="text-2xl text-blue-500 font-bold">
+              <div className="text-xl text-blue-500 font-bold">
                 Machine learning &amp; Full stack development.
               </div>{" "}
             </div>
