@@ -5,9 +5,8 @@ import icon from "../assets/S.png"
 const navigationListItems = [
   { label: 'Home', path: '/#' },
   { label: 'Projects', path: '/#projects' },
-  { label :'Skills', path : '/#skills' },
-  { label : 'Blog', path : '/blog/#'},
   { label: 'Contact', path: '/#contact' },
+  { label : 'Blog', path : '/blog/#'},
   {label :"Resume", path : "/resume"}
 ];
 
@@ -16,10 +15,10 @@ const Header = () => {
 
 
   return (
-    <header className="bg-gray-50 shadow-md fixed w-full z-10">
+    <header className="bg-gray-50 dark:bg-gray-800 dark:text-slate-200 shadow-md fixed w-full z-10">
       <div className="container mx-auto px-6 py-3 md:flex md:items-center md:justify-around">
         <div className="flex items-center justify-between">
-          <div className="text-lg md:text-2xl lg:text-3xl font-bold text-gray-900" style={{fontFamily:"Montserrat"}}>
+          <div className="text-lg md:text-2xl lg:text-3xl font-bold dark:text-white text-gray-900" style={{fontFamily:"Montserrat"}}>
             <Link to="/" className="hover:text-blue-400 transition duration-200">
               <img src={icon} alt="S icon" className='w-10 relative bottom-1 h-10 inline-block mx-2 rounded-lg'  />
               Santhosh Mani 

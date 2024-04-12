@@ -8,7 +8,7 @@ import jwtGenKey from '../assets/JWT-gen-key.png'
 import SLRImg from "../assets/SLR.png";
 import SpaceContainer from "../components/SpaceContainer"
 
-const projectCategories = ["All", "Web", "Machine learning", "npm packages"];
+const projectCategories = ["All", "Web", "Machine learning",]
 const projectsList = [
   {
     id: 1,
@@ -19,6 +19,7 @@ const projectsList = [
     techStack: [
       {
         name: "Python",
+
         icon: <SiPython />,
         color: "#3776AB" // Python color
       },
@@ -84,48 +85,6 @@ const projectsList = [
     githubSource: "https://www.github.com/santhoshmani1/Clear-space",
     liveLink: "",
   },
-  {
-    id: 4,
-    title: "JWT gen key",
-    coverImage: jwtGenKey,
-    category: "npm packages",
-    description: "JWT gen key helps to generate the public and private key for JWT token generation and verification",
-    techStack: [
-      {
-        name: "Node JS",
-        icon: <SiNodedotjs />,
-        color: "green" // JavaScript color
-      },
-      {
-        name: "JavaScript",
-        icon: <SiJavascript />,
-        color: "yellow"
-      }
-    ],
-    githubSource: "https://www.github.com/santhoshmani1/jwt-gen-key",
-    npmWebsite: "https://www.npmjs.com/package/jwt-gen-key"
-  },
-  {
-    id: 5,
-    title: "npm cli tour",
-    coverImage: npmCliTour,
-    category: "npm packages",
-    description: "A fun interactive cli application built using node js to learn about getting started with npm and its usage.",
-    techStack: [
-      {
-        name: "Node JS",
-        icon: <SiNodedotjs />,
-        color: "green"
-      },
-      {
-        name: "JavaScript",
-        icon: <SiJavascript />,
-        color: "yellow"
-      }
-    ],
-    githubSource: "https://www.github.com/santhoshmani1/npm-cli-tour",
-    npmWebsite: "https://www.npmjs.com/package/npm-cli-tour"
-  }
 ];
 
 
@@ -144,7 +103,7 @@ const Projects = () => {
   //     return inView;
   //   }));
   return (
-    <section id="projects">
+    <section id="projects" className="dark:bg-gray-950 dark:text-slate-200">
       <SpaceContainer />
       <h2
         className="text-4xl text-center m-2 leading-relaxed"
@@ -157,8 +116,8 @@ const Projects = () => {
         {projectCategories.map((category, index) => (
           <span
             key={index}
-            className={`px-4 py-2 m-1 border-2 border-black rounded-3xl text-sm md:text-lg lg:text-xl cursor-pointer transition-all duration-400 ease-linear font-bold text-center 
-        ${selectedCategory === category ? 'bg-black text-slate-200' : 'hover:bg-black hover:text-slate-200'}`}
+            className={`px-4 py-2 m-1 border-2 border-black dark:border-blue-800 rounded-3xl text-sm md:text-lg lg:text-xl cursor-pointer transition-all duration-400 ease-linear font-bold text-center 
+        ${selectedCategory === category ? 'bg-black text-slate-200 dark:border-blue-200' : 'hover:bg-black hover:text-slate-200'}`}
             style={{ fontFamily: "Montserrat" }}
             onClick={() => setSelectedCategory(category)}
           >
@@ -167,7 +126,7 @@ const Projects = () => {
         ))}
       </div>
 
-      <div className="projects-list lg:w-1/2 m-auto">
+      <div className="projects-list lg:w-1/2 m-auto p-2">
         {projectsList.filter((project) => (selectedCategory === "All") || (project.category === selectedCategory)).map((project) => {
           const {
             id,
@@ -180,15 +139,15 @@ const Projects = () => {
             npmWebsite
           } = project;
           return (
-            <div key={id} className="py-4 px-4 border-2 border-blue-800 my-4 w-4/5  mx-auto sm:w-full rounded-2xl" style={{ fontFamily: "Montserrat" }}>
+            <div key={id} className="py-4 px-4 hover:shadow-md hover:shadow-blue-400 my-8 w-4/5  mx-auto sm:w-full rounded-2xl bg-slate-50 dark:bg-zinc-950" style={{ fontFamily: "Montserrat" }}>
               <h3 className="text-2xl font-bold p-2 text-center text-blue-600">{title}</h3>
               <div className="flex justify-between items-center flex-col sm:flex-row">
                 <img src={coverImage} alt={title + "image"} className="w-40 h-40 p-2 rounded-xl object-cover" />
-                <p className="sm:text-lg px-4 py-2 leading-relaxed">{description}</p>
+                <p className="sm:text-lg px-4 py-2 leading-relaxed text-sm">{description}</p>
               </div>
               <div className="p-2 flex flex-row justify-center items-center flex-wrap">
                 {techStack.map((tech, index) => (
-                  <div className="border-2 skill-info m-2 px-4 py-2 rounded-xl text-center flex justify-center items-center text-sm" key={index}>
+                  <div className="border-2 skill-info m-2 px-4 py-2 rounded-xl text-center flex justify-center items-center text-sm bg-gray-150" key={index}>
                     <span>{tech.name}</span>
                     <span className="inline-block px-4 text-xl" style={{ color: tech.color }} key={index}>{tech.icon}</span>
                   </div>
@@ -208,7 +167,7 @@ const Projects = () => {
                   </a>
                 )}
                 <a href={githubSource} target="_blank" rel="noreferrer">
-                  <button className="py-4 px-6 rounded-md m-2 bg-zinc-800 hover:bg-black font-bold text-white text-sm sm:text-lg">
+                  <button className="py-4 px-6 rounded-md m-2 bg-gray-900 hover:bg-gray-950 font-bold text-white text-sm sm:text-lg border-2 hover:border-blue-600">
                     View source on <FaGithub className="inline-block mx-1" />{" "}
                   </button>
                 </a>

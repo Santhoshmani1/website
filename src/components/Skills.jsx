@@ -32,7 +32,7 @@ const programmingLanguages = [
     {
         name: "Solidity",
         icon: <SiSolidity />,
-        color: "black"
+        color: "#feffff"
     }
 ];
 
@@ -50,7 +50,7 @@ const webTechnologies = [
     {
         name: "Express.js",
         icon: <SiExpress />,
-        color: "black",
+        color: "#feffff",
     },
     {
         name: "MongoDB",
@@ -71,10 +71,10 @@ const webTechnologies = [
 
 const Skills = () => {
     return (
-        <div className="skills-container my-2 py-10 px-2" style={{ fontFamily: "Montserrat" }} id="skills" >
+        <div className="skills-container py-10 px-2 dark:bg-slate-900 dark:text-slate-200" style={{ fontFamily: "Montserrat" }} id="skills" >
             <h2 className="text-3xl text-center py-12 px-10  leading-relaxed font-bold">Skills</h2>
 
-            <h3 className="text-xl font-bold text-center p-4 m-2">Programming languages</h3>
+            <h3 className="text-2xl font-bold text-center p-4 m-2 dark:text-blue-400">Programming languages</h3>
 
             <div className="languages-container flex justify-evenly lg:w-1/2 m-auto items-center">
                 {programmingLanguages.map((language, index) => (
@@ -90,7 +90,7 @@ const Skills = () => {
                 ))}
             </div>
 
-            <h3 className="text-xl font-bold text-center p-4 m-2">Web technologies</h3>
+            <h3 className="text-2xl font-bold text-center p-4 m-2 dark:text-blue-400">Web technologies</h3>
             <div className="web-technologies-container flex justify-center items-center flex-wrap">
                 {webTechnologies.map((technology, index) => (
                     <div key={index} className="skill px-4 py-2 text-xl flex items-center justify-center flex-col">
