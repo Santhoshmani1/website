@@ -1,0 +1,27 @@
+.blog-h2 {
+  font-size: 30px;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.blog-para {
+  font-family: "Montserrat", "Ariel", "Inter", sans-serif;
+  font-size: 18px;
+  margin: 20px;
+}
+
+.credit {
+  text-align: center;
+}
+
+img {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.post-body {
+  width: 80vw;
+  margin: auto;
+}

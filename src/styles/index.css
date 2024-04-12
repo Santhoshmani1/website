@@ -3,6 +3,11 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  font-family: "Montserrat", "Inter", "Ariel", "Helvetica Neue", Helvetica,
+    sans-serif;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -23,7 +28,7 @@ html {
 }
 
 .fadeIn {
-  animation: fadeIn 2000ms ease-out;
+  animation: fadeIn 1200ms ease-out;
 }
 
 @keyframes fadeIn {
