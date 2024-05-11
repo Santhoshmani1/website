@@ -5,9 +5,8 @@ import icon from "../assets/S.png"
 const navigationListItems = [
   { label: 'Home', path: '/#' },
   { label: 'Projects', path: '/#projects' },
+  { label: 'Blog', path: '/blog/#' },
   { label: 'Contact', path: '/#contact' },
-  { label : 'Blog', path : '/blog/#'},
-  {label :"Resume", path : "/resume"}
 ];
 
 const Header = () => {
@@ -15,17 +14,17 @@ const Header = () => {
 
 
   return (
-    <header className="bg-gray-50 dark:bg-gray-800 dark:text-slate-200 shadow-md fixed w-full z-10">
-      <div className="container mx-auto px-6 py-3 md:flex md:items-center md:justify-around">
+    <header className="fixed z-10 w-full shadow-md bg-gray-50 dark:bg-gray-950 dark:text-slate-200">
+      <div className="container px-4 py-2 mx-auto lg:px-6 md:flex md:items-center md:justify-evenly">
         <div className="flex items-center justify-between">
-          <div className="text-lg md:text-2xl lg:text-3xl font-bold dark:text-white text-gray-900" style={{fontFamily:"Montserrat"}}>
-            <Link to="/" className="hover:text-blue-400 transition duration-200">
-              <img src={icon} alt="S icon" className='w-10 relative bottom-1 h-10 inline-block mx-2 rounded-lg'  />
-              Santhosh Mani 
+          <div className="text-lg font-bold text-gray-900 lg:text-3xl dark:text-white" style={{ fontFamily: "Montserrat" }}>
+            <Link to="/" className="text-center transition duration-200 hover:text-blue-400">
+              <img src={icon} alt="S icon" className='relative inline-block w-10 h-10 mx-2 rounded-lg bottom-1' />
+              Santhosh Mani
             </Link>
           </div>
           <button
-            className="md:hidden block"
+            className="block md:hidden"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? (
@@ -36,12 +35,12 @@ const Header = () => {
           </button>
         </div>
         <nav className={`md:flex transition-all duration-500 ease-in-out ${isOpen ? 'block' : 'hidden'} mt-4 lg:mt-0`}>
-          <ul className="flex flex-col md:flex-row items-center justify-center md:space-x-10 space-y-2 md:space-y-0">
+          <ul className="flex flex-col items-center justify-center space-y-2 md:flex-row md:space-x-10 md:space-y-0">
             {navigationListItems.map((item, index) => (
-              <li key={index} className='text-lg'>
+              <li key={index}>
                 <Link
                   to={item.path}
-                  className="hover:underline transition duration-200 font-sans text-lg text-left hover:text-blue-600" style={{fontFamily: 'Montserrat'}}
+                  className="font-sans font-bold text-left text-gray-400 transition duration-200 hover:text-white" style={{ fontFamily: 'Montserrat' }}
                   onClick={() => setIsOpen(false)}
                 >
                   {item.label}
@@ -49,6 +48,9 @@ const Header = () => {
               </li>
             ))}
           </ul>
+          <div className='flex items-center justify-center p-2'>
+            <a href={"https://www.upwork.com/freelancers/~0115077b7087cbda61"} target='_blank' rel='noreferrer' className='p-3 mx-8 font-mono text-lg font-bold text-center text-gray-300 duration-300 border border-white shadow-md hover:bg-slate-950 rounded-xl hover:text-white shadow-green-600 hover:shadow-blue-600'>Hire on Upwork <span className="text-sm font-bold text-blue-800 material-icons animate-pulse">arrow_outward</span></a>
+          </div>
         </nav>
       </div>
     </header>
