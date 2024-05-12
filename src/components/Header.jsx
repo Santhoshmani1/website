@@ -17,7 +17,7 @@ const Header = () => {
     <header className="fixed z-10 w-full shadow-md bg-gray-50 dark:bg-gray-950 dark:text-slate-200">
       <div className="container px-4 py-2 mx-auto lg:px-6 md:flex md:items-center md:justify-evenly">
         <div className="flex items-center justify-between">
-          <div className="text-lg font-bold text-gray-900 lg:text-3xl dark:text-white" style={{ fontFamily: "Montserrat" }}>
+          <div className="text-xl font-bold text-gray-900 lg:text-3xl dark:text-white" style={{ fontFamily: "Montserrat" }}>
             <Link to="/" className="text-center transition duration-200 hover:text-blue-400">
               <img src={icon} alt="S icon" className='relative inline-block w-10 h-10 mx-2 rounded-lg bottom-1' />
               Santhosh Mani

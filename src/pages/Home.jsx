@@ -4,7 +4,6 @@ import Projects from "../components/Projects";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import { FaGithub } from "react-icons/fa";
-import spiralImg from '../assets/spiral.jpg'
 import { SiUpwork } from "react-icons/si";
 
 const Home = () => {

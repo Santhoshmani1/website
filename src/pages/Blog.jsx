@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from 'react'
 import Header from '../components/Header'
-import SpaceContainer from '../components/SpaceContainer'
 import Footer from '../components/Footer'
 import blogPosts from '../data/blogPosts'
 import PostCover from "../components/blog/PostCover.jsx"
@@ -11,9 +9,8 @@ const Blog = () => {
   return (
     <>
       <Header />
-
-      <div className='min-h-screen pt-12 dark:bg-gray-950 dark:text-slate-200'>
-        <h1 className="text-4xl text-center pt-4 leading-relaxed" style={{ fontFamily: "Montserrat" }} id="blog">
+      <div className='min-h-screen pt-12 font-mono lg:pt-20 dark:bg-gray-950 dark:text-slate-200'>
+        <h1 className="pt-4 text-4xl leading-relaxed text-center" style={{ fontFamily: "Montserrat" }} id="blog">
           Blog
         </h1>
         <PostCover blogPosts={blogPosts} />
