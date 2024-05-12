@@ -5,13 +5,14 @@ import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import { FaGithub } from "react-icons/fa";
 import { SiUpwork } from "react-icons/si";
+import SpaceContainer from "../components/SpaceContainer";
 
 const Home = () => {
   return (
     <>
       <Header />
-
       <div className="flex flex-col justify-center min-h-screen my-auto font-mono lg:items-start home-hero dark:bg-gray-900 dark:text-white fadeIn" id="home-bg">
+        <SpaceContainer />
         <div className="container px-2 py-5 mx-auto lg:w-3/5">
           <h2 className="text-3xl font-bold text-center text-gray-200 sm:text-5xl lg:text-6xl">
             Welcome to my Website{" "}
