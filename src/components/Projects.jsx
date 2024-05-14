@@ -13,8 +13,8 @@ const projectsList = [
     coverImage: playStoreIcon,
     description: `Google Play monior helps android development teams to analyse user reviews and gain insights of 3 categories : New feature requests, Bug reports & Design improvements using gemini 1.5 pro`,
     category: "Web",
-    githubSource: "https://www.github.com/santhoshmani1/Inferhub",
-    liveLink: "https://inferhub.vercel.app/",
+    githubSource: "https://www.github.com/santhoshmani1/Play-Monitor",
+    liveLink: "https://playmonitor.vercel.app",
   },
   {
     id: 2,
@@ -29,7 +29,7 @@ const projectsList = [
     id: 3,
     title: "Clear space",
     coverImage: ClearspaceImg,
-    description: "Clear Space is a browser extension which helps users to remove distractions from popular social media websites. It removes distractive features like watch recommendations, comments section and shorts videos from youtube",
+    description: "Clear Space is a browser extension which helps users to remove distractions from popular social media websites. It removes distractive features like watch recommendations, comments and shorts videos sections from youtube",
     category: "Web",
 
     githubSource: "https://www.github.com/santhoshmani1/Clear-space",
@@ -68,7 +68,7 @@ const Projects = () => {
               <h3 className="p-2 text-2xl font-bold text-center">{title}</h3>
               <div className="flex flex-col items-center justify-between sm:flex-row">
                 <img src={coverImage} alt={title + "image"} className="object-cover h-24 p-4 rounded-xl w-30 md:h-40 md:w-40" />
-                <p className="p-2 leading-relaxed tracking-wide sm:text-lg">{description}</p>
+                <p className="p-2 leading-relaxed tracking-normal sm:text-lg">{description}</p>
               </div>
               <div className="flex flex-col items-center links-container justify-evenly sm:flex-row">
                 {
