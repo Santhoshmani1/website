@@ -49,7 +49,7 @@ const Header = () => {
             ))}
           </ul>
           <div className='flex items-center justify-center p-2'>
-            <a href={"https://www.upwork.com/freelancers/~0115077b7087cbda61"} target='_blank' rel='noreferrer' className='p-3 mx-8 font-mono text-lg font-bold text-center text-gray-300 duration-300 border border-white shadow-md hover:bg-slate-950 rounded-xl hover:text-white shadow-green-600 hover:shadow-blue-600'>Hire on Upwork <span className="text-sm font-bold text-blue-800 material-icons animate-pulse">arrow_outward</span></a>
+            <a href={"https://www.upwork.com/freelancers/~0115077b7087cbda61"} target='_blank' rel='noreferrer' className='p-2 mx-8 font-mono font-bold text-center text-gray-300 duration-300 border border-white shadow-md sm:text-lg r hover:bg-slate-950 rounded-xl hover:text-white shadow-green-600 hover:shadow-blue-600'>Hire on Upwork <span className="text-sm font-bold text-blue-800 material-icons animate-pulse">arrow_outward</span></a>
           </div>
         </nav>
       </div>

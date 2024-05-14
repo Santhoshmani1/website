@@ -23,7 +23,7 @@ const Home = () => {
           </div>
 
           <div className="w-5/6 m-4 mx-auto leading-relaxed text-center md:text-center sm:text-left md:text-2xl text-slate-300 lg:w-3/4">
-            I love building web applications, tinkering with web security &amp; participating in hackathons.
+            I love building web applications, tinkering with web security &amp; contributing to OSS.
           </div>
 
           <div className="flex flex-col justify-center py-4 mx-auto lg:w-3/4 sm:flex-row">
