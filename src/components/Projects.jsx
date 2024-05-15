@@ -52,7 +52,7 @@ const Projects = () => {
         <div className="pt-10"><img src={chromeDino} alt="dino" className="py-2 mx-auto h-60 rounded-xl lg:h-60" /></div>
       </div>
 
-      <div className="flex flex-col items-center justify-center p-2 m-auto lg:gap-10 lg:grid-rows-2 lg:grid-cols-2 lg:grid projects-list">
+      <div className="flex flex-col items-center justify-center p-2 m-auto lg:gap-5 lg:grid-rows-2 lg:grid-cols-2 lg:grid projects-list">
         {projectsList.map((project) => {
           const {
             id,
@@ -64,10 +64,10 @@ const Projects = () => {
             npmWebsite
           } = project;
           return (
-            <div key={id} className="w-4/5 px-4 py-4 mx-auto my-8 text-gray-400 duration-200 border border-gray-700 cursor-default hover:shadow-md hover:shadow-blue-400 sm:w-full rounded-2xl dark:bg-slate-950 hover:bg-slate-950 hover:text-slate-200" style={{ fontFamily: "Montserrat" }}>
+            <div key={id} className="w-5/6 px-4 py-4 mx-auto my-8 text-gray-400 duration-200 border border-gray-700 cursor-default md:w-4/5 hover:shadow-md hover:shadow-blue-400 sm:w-full rounded-2xl dark:bg-slate-950 hover:bg-slate-950 hover:text-slate-200" style={{ fontFamily: "Montserrat" }}>
               <h3 className="p-2 text-2xl font-bold text-center">{title}</h3>
               <div className="flex flex-col items-center justify-between sm:flex-row">
-                <img src={coverImage} alt={title + "image"} className="object-cover h-24 p-4 rounded-xl w-30 md:h-40 md:w-40" />
+                <img src={coverImage} alt={title + "image"} className="object-cover h-40 p-4 rounded-xl md:h-40 md:w-40" />
                 <p className="p-2 leading-relaxed tracking-normal sm:text-lg">{description}</p>
               </div>
               <div className="flex flex-col items-center links-container justify-evenly sm:flex-row">
@@ -79,7 +79,7 @@ const Projects = () => {
                   )
                 }
                 {liveLink && (
-                  <a className="px-8 py-3 m-2 text-sm font-bold text-white duration-300 bg-gray-900 border border-gray-400 rounded-lg sm:text-lg hover:bg-black hover:shadow-md hover:shadow-blue-600" href={liveLink} target="_blank" rel="noreferrer">
+                  <a className="px-8 py-2 m-2 text-sm font-bold text-white duration-300 bg-gray-900 border border-gray-400 rounded-lg sm:text-lg hover:bg-black hover:shadow-md hover:shadow-blue-600" href={liveLink} target="_blank" rel="noreferrer">
                     View Live 🌐
                   </a>
                 )}

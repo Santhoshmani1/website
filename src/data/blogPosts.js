@@ -6,16 +6,15 @@ const blogPosts = [
     title: "The Essence of Bitcoin Halving",
     coverImage: btcIcon,
     slug: "essence-of-bitcoin-halving",
-    published : "April 2024",
+    published : "10 Apr 2024",
     mediumLink :"https://medium.com/@santhoshmani1/the-essence-of-bitcoin-halving-42ab49bff77a",
-    description: "Learn what the process of block reward halving does to Bitcoin & it's relation to Block reward",
+    description: "What does the process of block reward halving does to Bitcoin ?",
     body: {
       content: `
             
            <p class="blog-para">
             Bitcoin Halving is the process of reducing the amount of block reward for miners. This allows to create a limited supply of bitcoins unlike the unlimited creation & supply of traditional money. Bitcoin halving is the key reason behind the idea of inflation resistivity of Bitcoin. 
             </p>
-
 
             <img src=${btcIcon} />
 

@@ -1,6 +1,7 @@
 import blogPosts from '../../data/blogPosts'
 import Header from '../Header'
 import Footer from '../Footer'
+import SpaceContainer from '../SpaceContainer'
 
 const Post = () => {
 
@@ -14,7 +15,7 @@ const Post = () => {
   return (
     <>
       <Header />
-      <div className='py-2 font-mono lg:pt-20 dark:bg-gray-950 dark:text-slate-200'>
+      <div className='py-20 font-mono dark:bg-gray-950 dark:text-slate-200'>
         <div className='flex items-center justify-evenly'>
           <h2 className='text-3xl font-bold text-center text-blue-500'>{article.title}</h2>
         </div>
