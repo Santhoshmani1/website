@@ -76,7 +76,7 @@ const Skills = () => {
 
             <h3 className="p-4 m-2 text-2xl font-bold text-center dark:text-blue-400">Programming languages</h3>
 
-            <div className="flex items-center p-2 m-auto languages-container justify-evenly lg:w-1/2">
+            <div className="flex flex-wrap items-center p-2 m-auto languages-container justify-evenly lg:w-1/2">
                 {programmingLanguages.map((language, index) => (
                     <div key={index} className="flex flex-col items-center justify-center skill">
                         <span

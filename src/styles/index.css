@@ -3,15 +3,15 @@
 @tailwind components;
 @tailwind utilities;
 
-
 * {
   font-family: monospace, sans-serif;
 }
 
-h1,h2, h3 {
-  font-family: 'Open Sans', sans-serif;
+h1,
+h2,
+h3 {
+  font-family: "Open Sans", sans-serif;
   font-weight: 600;
-  line-height: 1rem;
 }
 ::-webkit-scrollbar {
   width: 8px;
@@ -45,5 +45,5 @@ html {
   }
 }
 #home-bg {
-background-image: url("../assets/spacetravel.gif");
+  background-image: url("../assets/spacetravel.gif");
 }
