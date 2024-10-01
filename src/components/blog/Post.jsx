@@ -10,11 +10,11 @@ const Post = () => {
   setTimeout(() => {
     const articleBody = document.querySelector('.article-body')
     articleBody.innerHTML = article.body.content;
-  }, 1000)
+  }, 50)
   
   return (
     <>
-      <Header />
+      <Header /> c
       <div className='py-20 font-mono dark:bg-gray-950 dark:text-slate-200'>
         <div className='flex items-center justify-evenly'>
           <h2 className='text-3xl font-bold text-center text-blue-500'>{article.title}</h2>

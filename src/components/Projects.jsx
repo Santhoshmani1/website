@@ -45,18 +45,17 @@ const Projects = () => {
       <div className="flex flex-col items-center justify-center md:flex-row">
         <h2
           className="px-10 m-2 text-4xl font-bold leading-relaxed text-center"
-          style={{ fontFamily: "Montserrat" }}
         >
           Projects
         </h2>
         <div className="pt-10"><img src={chromeDino} alt="dino" className="py-2 mx-auto h-60 rounded-xl lg:h-60" /></div>
       </div>
 
-      <div className="flex flex-col items-center justify-center p-2 m-auto lg:gap-5 lg:grid-rows-2 lg:grid-cols-2 lg:grid projects-list">
+      <div className="flex flex-col items-center justify-center p-2 m-auto lg:gap-5 projects-list">
         {projectsList.map((project) => {
           const {
             id,
-            title,
+          title,
             description,
             coverImage,
             githubSource,

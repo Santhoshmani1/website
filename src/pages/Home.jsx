@@ -1,50 +1,57 @@
-import Header from "../components/Header";
-import Skills from "../components/Skills"
-import Projects from "../components/Projects";
-import Contact from "../components/Contact";
-import Footer from "../components/Footer";
 import { FaGithub } from "react-icons/fa";
-import { SiUpwork } from "react-icons/si";
-import SpaceContainer from "../components/SpaceContainer";
+import {
+  Header,
+  Projects,
+  Footer,
+  SpaceContainer,
+} from "../components";
+import CursorFollowingGraph from "../components/CursorFollowingGraph";
+import { SiGmail } from "react-icons/si";
 
 const Home = () => {
   return (
     <>
       <Header />
-      <div className="flex flex-col justify-center min-h-screen my-auto font-mono lg:items-start home-hero dark:bg-gray-900 dark:text-white fadeIn" id="home-bg">
+      <div
+        className='relative flex flex-col justify-center min-h-screen my-auto font-mono lg:items-start home-hero bg-gray-900 text-white fadeIn'
+        id='home-bg'
+      >
         <SpaceContainer />
-        <div className="container px-2 py-5 mx-auto lg:w-3/5">
-          <h2 className="text-3xl font-bold text-center text-gray-200 sm:text-5xl lg:text-6xl">
-            Welcome to my Website{" "}
+          <CursorFollowingGraph />
+        <div className='m-4 mx-auto leading-relaxed text-left sm:text-left md:text-2xl sm:w-2/3 w-10/12 px-6 z-10'>
+          <h2 className='text-4xl font-bold text-left text-white sm:text-5xl lg:text-6xl contrast-200 py-8'>
+            Hi, I&apos;m Santhosh
           </h2>
+          I love building web applications, tinkering with web security, Machine Learning &amp; contributing to Open Source Software.
 
-          <div className="w-5/6 m-4 mx-auto leading-relaxed text-center md:text-center sm:text-left md:text-2xl lg:w-3/4 text-slate-300">
-            My name is Santhosh mani. <div>I&apos;m a Full stack developer &amp; Freelance software developer from India.</div>
-          </div>
-
-          <div className="w-5/6 m-4 mx-auto leading-relaxed text-center md:text-center sm:text-left md:text-2xl text-slate-300 lg:w-3/4">
-            I love building web applications, tinkering with web security &amp; contributing to OSS.
-          </div>
-
-          <div className="flex flex-col justify-center py-4 mx-auto lg:w-3/4 sm:flex-row">
+          <h3 className='text-2xl py-6 font-bold text-left text-gray-400 sm:text-3xl lg:text-4xl'>Connect With Me</h3>
+          <div className='flex flex-row space-x-4'>
             <a
-              href="https://www.upwork.com/freelancers/~0115077b7087cbda61"
-              className="w-4/5 px-8 py-4 m-4 mx-auto text-lg font-semibold text-center transition-all duration-500 ease-in-out border-2 border-gray-600 rounded-md shadow-md bg-zinc-950 hover:bg-black hover:text-white text-slate-100 hover:shadow-blue-600 shadow-gray-600 hover:cursor-pointer lg:mx-2 "
+              href="https://github.com/santhoshmani1"
+              target='_blank'
+              rel='noreferrer'
+              aria-label={"github"}
+              className='flex items-center transition duration-300 justify-evenly lg:text-xl  border p-2 rounded-xl cursor-pointer'
             >
-              Hire on Upwork <SiUpwork className="inline-block mx-1 text-green-600" />
+              <span className='px-1'><FaGithub /></span>
+              <span className='px-2'>Github</span>
             </a>
+
             <a
-              href="https://www.github.com/santhoshmani1/"
-              className="w-4/5 px-8 py-4 m-4 mx-auto text-lg font-semibold text-center transition-all duration-500 ease-in-out border-2 border-gray-600 rounded-md shadow-md bg-zinc-950 hover:bg-black hover:text-white text-slate-100 hover:shadow-blue-600 shadow-gray-600 hover:cursor-pointer lg:mx-2"
+              href="mailto:pitakasanthosh@gmail.com"
+              target='_blank'
+              rel='noreferrer'
+              aria-label={"mail"}
+              className='flex items-center transition duration-300 justify-evenly lg:text-xl  border p-2 rounded-xl hover:text-white cursor-pointer'
             >
-              Github profile <FaGithub className="inline-block mx-1" />
+              <span className='px-1'><SiGmail /></span>
+              <span className='px-2'>Mail</span>
             </a>
+
           </div>
         </div>
       </div>
       <Projects />
-      <Skills />
-      <Contact />
       <Footer />
     </>
   );

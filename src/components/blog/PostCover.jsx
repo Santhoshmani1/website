@@ -1,10 +1,10 @@
 const PostCover = ({ blogPosts }) => {
     return (
-        <>
+        <div className="py-10 lg:grid lg:grid-cols-2">
             {blogPosts.map((post) => {
                 const { title, coverImage, description, categories, slug, published } = post;
                 return (
-                    <div key={slug} className='flex flex-col items-center justify-center p-4 m-4 font-sans transition-all duration-700 ease-in-out border border-gray-600 shadow md:w-2/5 lg:justify-start rounded-xl hover:shadow-blue-800 shadow-sky-400 hover:bg-slate-900'>
+                    <div key={slug} className='flex flex-col items-center justify-center p-4 m-4 font-sans transition-all duration-700 ease-in-out border border-gray-600 shadow md:1/2 lg:justify-start rounded-xl hover:shadow-blue-800 shadow-sky-400 hover:bg-slate-900'>
                         <a href={"/blog/" + slug} style={{fontFamily:"Open sans, sans-serif"}}>
                             <div className="flex flex-col sm:flex-row">
                                 <img src={coverImage} className='w-40 h-40' alt="" />
@@ -29,7 +29,7 @@ const PostCover = ({ blogPosts }) => {
                     </div>
                 )
             })}
-        </>
+        </div>
     )
 }
 
