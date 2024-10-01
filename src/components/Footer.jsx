@@ -23,7 +23,7 @@ const Footer = () => {
   return (
     <>
       <footer>
-        <div className='flex flex-col items-center py-6 text-slate-200 bg-gray-950 border-t border-t-slate-500 footer-wrapper justify-evenly md:flex-row'>
+        <div className='flex flex-col items-center py-6 text-slate-200 bg-gray-950 border-t border-t-slate-500 footer-wrapper justify-evenly md:flex-row px-4'>
           <div className='copyright-info lg:text-xl'>
             &copy; Santhosh Mani {new Date().getFullYear()}
           </div>

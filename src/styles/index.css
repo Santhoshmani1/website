@@ -13,17 +13,6 @@ h3 {
   font-weight: 600;
 }
 
-::-webkit-scrollbar {
-  width: 4px;
-}
-::-webkit-scrollbar-track {
-  background: #151515;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #069aed;
-}
-
 html {
   scroll-behavior: smooth;
 }
