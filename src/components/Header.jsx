@@ -4,8 +4,7 @@ import icon from "../assets/S.png"
 
 const navigationListItems = [
   { label: 'Home', path: '/#' },
-  { label: 'Projects', path: '/#projects/#' },
-  { label: "Experience", path: '/#experience/#' },
+  { label: 'Projects', path: '/#projects' },
   { label: 'Blog', path: '/blog/#' },
 ];
 
@@ -37,7 +36,10 @@ const Header = () => {
                 <Link
                   to={item.path}
                   className="text-lg leading-loose text-left text-gray-50 hover:underline transition duration-200 hover:text-white"
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => {
+                    setIsOpen(false)
+                    setMenuIcon("menu")
+                  }}
                 >
                   {item.label}
                 </Link>

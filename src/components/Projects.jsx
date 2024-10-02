@@ -1,9 +1,8 @@
 import { FaGithub } from "react-icons/fa";
-import { SiCss3, SiExpress, SiHtml5, SiJavascript, SiNodedotjs, SiNpm, SiReact, SiTailwindcss } from "react-icons/si";
+import { SiCss3, SiExpress, SiHtml5, SiJavascript, SiNodedotjs, SiReact, SiTailwindcss } from "react-icons/si";
 import playStoreIcon from '../assets/playstore.avif'
 import InferhubImg from "../assets/inferhub.png";
 import ClearspaceImg from "../assets/clearspace.png";
-import chromeDino from '../assets/chromedino.gif'
 import SpaceContainer from "./SpaceContainer";
 import { GiGemini } from "react-icons/gi";
 
@@ -57,7 +56,7 @@ const projectsList = [
 
 const Projects = () => {
   return (
-    <section id="projects" className="font-sans dark:bg-gray-950 dark:text-slate-200">
+    <section id="projects" className="font-sans bg-gray-950 text-slate-200 py-4">
       <SpaceContainer />
       <div className="flex flex-col items-center justify-center md:flex-row">
         <h2
@@ -87,7 +86,7 @@ const Projects = () => {
                   <div className="w-full">
                     <p className="p-2 leading-relaxed tracking-normal">{description}</p>
                   </div>
-                  <div className="flex flex-wrap gap-1 ">
+                  <div className="flex flex-wrap gap-1 px-2 py-4">
                     {technologies.map((tech, index) => {
                       return (
                         <div
@@ -119,6 +118,7 @@ const Projects = () => {
           );
         })}
       </div>
+      <SpaceContainer />
     </section>
   );
 };
