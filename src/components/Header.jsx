@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { HashLink as Link } from 'react-router-hash-link';
-import icon from "../assets/S.png"
+import icon from "../assets/S.png";
 
 const navigationListItems = [
   { label: 'Home', path: '/#' },
@@ -12,33 +12,32 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [menuIcon, setMenuIcon] = useState("menu");
 
-
   return (
-    <header className="p-1 z-20 w-full shadow-md bg-slate-800 fixed border-b border-b-slate-600 rounded-sm">
+    <header className="p-1 z-20 w-full shadow-md bg-slate-800 text-white border-b border-b-slate-600 rounded-sm fixed">
       <div className="container px-4 py-2 mx-auto lg:px-6 md:flex md:items-center md:justify-evenly">
         <div className="flex items-center justify-between">
-          <div className="text-xl font-semibold lg:text-3xl text-white">
+          <div className="text-xl font-semibold lg:text-3xl">
             <Link to="/" className="text-center transition duration-200 hover:text-blue-400">
-              <img src={icon} alt="S icon" className='relative inline-block w-10 h-10 mx-2 rounded-lg bottom-1' />
+              <img src={icon} alt="S icon" className='relative inline-block w-10 h-10 mx-2 rounded-lg' />
               Santhosh Mani
             </Link>
           </div>
           <button className='material-icons text-white sm:hidden' onClick={() => {
-            setIsOpen(!isOpen)
-            setMenuIcon(isOpen ? "menu" : "close")
-          }}>{ menuIcon}</button>
+            setIsOpen(!isOpen);
+            setMenuIcon(isOpen ? "menu" : "close");
+          }}>{menuIcon}</button>
         </div>
 
-        <nav className={`md:flex transition-all duration-500 z-10 ease-in-out ${isOpen ? 'block' : 'hidden'} mt-4 lg:mt-0`}>
-          <ul className="flex flex-col items-center justify-center space-y-2 md:flex-row md:space-x-10 md:space-y-0">
+        <nav className={`md:flex transition-all duration-500  ease-in-out ${isOpen ? 'nav-open' : 'nav-closed'} z-10 text-white`}>
+          <ul className="flex flex-col items-center justify-center md:flex-row md:space-x-10 md:space-y-0">
             {navigationListItems.map((item, index) => (
               <li key={index}>
                 <Link
                   to={item.path}
-                  className="text-lg leading-loose text-left text-gray-50 hover:underline transition duration-200 hover:text-white"
+                  className="text-lg leading-loose text-left text-gray-100 hover:underline transition duration-200 hover:text-white"
                   onClick={() => {
-                    setIsOpen(false)
-                    setMenuIcon("menu")
+                    setIsOpen(false);
+                    setMenuIcon("menu");
                   }}
                 >
                   {item.label}
@@ -46,10 +45,9 @@ const Header = () => {
               </li>
             ))}
           </ul>
-
         </nav>
       </div>
-    </header >
+    </header>
   );
 };
 
