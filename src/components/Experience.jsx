@@ -59,7 +59,7 @@ const Experience = () => {
             <div>
               <h3 className='text-xl font-bold'>{experience.title}</h3>
               <h4 className='text-lg'>{experience.role}</h4>
-              <ul className='px-8 text-slate-400 text-sm sm:text-lg leading-relaxed py-4'>
+              <ul className='lg:px-8 px-2 text-slate-400 text-sm sm:text-lg leading-relaxed py-4'>
                 <li className='list-disc'>
                   {experience.description}
                 </li></ul>
