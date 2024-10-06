@@ -7,10 +7,16 @@
 }
 
 h1,
-h2,
-h3 {
+h2 {
   font-family: "Poppins", sans-serif;
   font-weight: 600;
+  color: #069aed;
+}
+
+h3{
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  
 }
 
 html {
@@ -30,17 +36,20 @@ html {
   }
 }
 
-
 @media screen and (max-width: 620px) {
-.nav-open {
+  .nav-open {
     max-height: 100px;
     opacity: 1;
-    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    transition:
+      max-height 0.5s ease-in-out,
+      opacity 0.5s ease-in-out;
   }
 
   .nav-closed {
     max-height: 0;
     opacity: 0;
-    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    transition:
+      max-height 0.5s ease-in-out,
+      opacity 0.5s ease-in-out;
   }
 }

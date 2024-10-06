@@ -1,6 +1,14 @@
 import { FaGithub } from "react-icons/fa";
-import { SiCss3, SiExpress, SiHtml5, SiJavascript, SiNodedotjs, SiReact, SiTailwindcss } from "react-icons/si";
-import playStoreIcon from '../assets/playstore.avif'
+import {
+  SiCss3,
+  SiExpress,
+  SiHtml5,
+  SiJavascript,
+  SiNodedotjs,
+  SiReact,
+  SiTailwindcss,
+} from "react-icons/si";
+import playStoreIcon from "../assets/playstore.avif";
 import InferhubImg from "../assets/inferhub.png";
 import ClearspaceImg from "../assets/clearspace.png";
 import SpaceContainer from "./SpaceContainer";
@@ -27,7 +35,8 @@ const projectsList = [
     id: 2,
     title: "Inferhub",
     coverImage: InferhubImg,
-    description: "Inferhub lets users to generate high quality AI images from text prompts with the stable diffusion SDXL base model inference API available on Huggingface",
+    description:
+      "Inferhub lets users to generate high quality AI images from text prompts with the stable diffusion SDXL base model inference API available on Huggingface",
     category: "Web",
     githubSource: "https://www.github.com/santhoshmani1/Inferhub",
     liveLink: "https://inferhub.vercel.app/",
@@ -41,7 +50,8 @@ const projectsList = [
     id: 3,
     title: "Clear space",
     coverImage: ClearspaceImg,
-    description: "Clear Space is a browser extension which helps users to remove distractions from popular social media websites. It removes distractive features like watch recommendations, comments and shorts videos sections from youtube",
+    description:
+      "Clear Space is a browser extension which helps users to remove distractions from popular social media websites. It removes distractive features like watch recommendations, comments and shorts videos sections from youtube",
     category: "Web",
     technologies: [
       { name: "Javascript", color: "yellow", icon: <SiJavascript /> },
@@ -53,21 +63,22 @@ const projectsList = [
   },
 ];
 
-
 const Projects = () => {
   return (
-    <section id="projects" className="font-sans bg-gray-950 text-slate-200 py-4">
+    <section
+      id="projects"
+      className="font-sans bg-gray-950 text-slate-200 py-4"
+    >
       <SpaceContainer />
       <div className="flex flex-col items-center justify-center md:flex-row">
-        <h2
-          className="px-10 m-2 text-4xl font-bold leading-relaxed text-center"
-        >
+        <h2 className="px-10 m-2 text-4xl font-bold leading-relaxed text-center">
           Projects
         </h2>
-        {/* <div className="pt-10"><img src={chromeDino} alt="dino" className="py-2 mx-auto h-60 rounded-xl lg:h-60" /></div> */}
-      </div>
 
-      <div className="flex justify-center p-2 m-auto lg:gap-5 projects-list sm:flex-row flex-col w-5/6 lg:w-3/4 items-stretch">
+      </div>
+        <h3 className="text-center py-4 font-normal">I like to work on side projects on my free time :)</h3>
+
+      <div className="flex justify-center p-2 m-auto lg:gap-5 projects-list sm:flex-row flex-col w-4/5 lg:w-3/4 items-stretch">
         {projectsList.map((project) => {
           const {
             id,
@@ -78,15 +89,21 @@ const Projects = () => {
             liveLink,
           } = project;
           return (
-            <div key={id} className="px-4 py-4 mx-auto my-4 text-gray-400 duration-200 md:w-4/5 sm:w-full rounded-2xl bg-slate-950 hover:bg-slate-950 border  border-gray-600 flex flex-col justify-around">
+            <div
+              key={id}
+              className="px-2 py-4 mx-auto my-4 text-gray-400 duration-200 md:w-4/5 sm:w-full rounded-2xl bg-slate-950 hover:bg-slate-950 border  border-gray-600 flex flex-col justify-around"
+            >
               <h3 className="py-2 text-2xl font-bold text-center text-slate-300 flex self-center gap-2">
-                {title}</h3>
+                {title}
+              </h3>
               <div className="flex flex-col">
                 <div className="flex-col text-sm ">
                   <div className="w-full">
-                    <p className="p-2 leading-relaxed tracking-normal">{description}</p>
+                    <p className="p-2 leading-relaxed tracking-normal">
+                      {description}
+                    </p>
                   </div>
-                  <div className="flex flex-wrap gap-1 px-2 py-4">
+                  <div className="flex flex-wrap gap-1 px-2 py-4 items-center justify-center sm:justify-normal">
                     {technologies.map((tech, index) => {
                       return (
                         <div
@@ -97,12 +114,16 @@ const Projects = () => {
                           <span className="pl-2">{tech.name}</span>
                         </div>
                       );
-                    }
-                    )}
+                    })}
                   </div>
-                  <div className="flex flex-col items-center links-container justify-evenly  sm:flex-row">
+                  <div className="flex items-center links-container justify-evenly  flex-row">
                     {liveLink && (
-                      <a className="p-2 m-2 hover:text-white duration-300 underline rounded-lg" href={liveLink} target="_blank" rel="noreferrer">
+                      <a
+                        className="p-2 m-2 hover:text-white duration-300 underline rounded-lg"
+                        href={liveLink}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
                         View Live 🌐
                       </a>
                     )}
@@ -124,4 +145,3 @@ const Projects = () => {
 };
 
 export default Projects;
-

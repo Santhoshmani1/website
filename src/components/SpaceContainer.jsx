@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const SpaceContainer = () => {
   return (
     <>
-    <div className='pt-20'></div>
+      <div className="pt-20"></div>
     </>
-  )
-}
+  );
+};
 
-export default SpaceContainer
+export default SpaceContainer;
