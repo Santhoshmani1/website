@@ -3,28 +3,28 @@ import { useRef, useEffect } from "react";
 const CursorFollowingGraph = () => {
   const canvasRef = useRef(null);
   const particlesRef = useRef([]); // Keep the particles in a useRef to maintain reference
-  const maxParticles = 120;
+  const maxParticles = 260;
 
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
-    const heroSection = document.getElementById("home-bg");
-    let width = heroSection.offsetWidth;
-    let height = heroSection.offsetHeight;
+    const canvasSection = document.getElementById("canvas-bg");
+    let width = canvasSection.offsetWidth;
+    let height = canvasSection.offsetHeight;
     canvas.width = width;
     canvas.height = height;
 
     const mouse = { x: -100, y: -100 }; // Initialize mouse position off-screen
 
     const handleMouseMove = (event) => {
-      const rect = heroSection.getBoundingClientRect();
+      const rect = canvasSection.getBoundingClientRect();
       mouse.x = event.clientX - rect.left;
       mouse.y = event.clientY - rect.top;
     };
 
     const handleResize = () => {
-      width = heroSection.offsetWidth;
-      height = heroSection.offsetHeight;
+      width = canvasSection.offsetWidth;
+      height = canvasSection.offsetHeight;
       canvas.width = width;
       canvas.height = height;
     };
@@ -106,7 +106,7 @@ const CursorFollowingGraph = () => {
       requestAnimationFrame(animate);
     };
 
-    // heroSection.addEventListener("mousemove", handleMouseMove);
+    // canvasSection.addEventListener("mousemove", handleMouseMove);
     // window.addEventListener("resize", handleResize);
 
     const randomParticleInterval = setInterval(createRandomParticles, 1); // Create random particles every 500ms
@@ -114,7 +114,7 @@ const CursorFollowingGraph = () => {
     animate(); // Start the animation
 
     return () => {
-      // heroSection.removeEventListener("mousemove", handleMouseMove);
+      // canvasSection.removeEventListener("mousemove", handleMouseMove);
       // window.removeEventListener("resize", handleResize);
       clearInterval(randomParticleInterval); // Clear the interval on cleanup
     };

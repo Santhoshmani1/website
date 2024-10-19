@@ -10,7 +10,7 @@ const Home = () => {
       <Header />
       <div
         className="relative flex flex-col justify-center min-h-screen my-auto font-mono lg:items-start home-hero bg-gray-900 text-white fadeIn"
-        id="home-bg"
+        id="canvas-bg"
       >
         <SpaceContainer />
         <CursorFollowingGraph />
@@ -20,7 +20,7 @@ const Home = () => {
           </h2>
           I love building web applications, tinkering with web security, Machine
           Learning &amp; contributing to Open Source Software.
-          <h3 className="text-2xl py-6 font-bold text-left sm:text-3xl lg:text-4xl">
+          <h3 className="text-2xl py-6 text-left sm:text-3xl lg:text-4xl">
             Connect With Me
           </h3>
           <div className="flex flex-row space-x-4">

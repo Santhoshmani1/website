@@ -30,15 +30,16 @@ const experienceDetails = [
     date: "February 2024 - March 2024",
     icon: SummerofBitcoinIcon,
     description: "Selected as an apprentice in the summer of bitcoin program, where I learned about the fundamentals of bitcoin, blockchain, and cryptography.",
-  }, {
-    id: 4,
-    title: "Bachelor of Technology in Electronics and Communication Engineering",
-    role: "Undergraduate student",
-    date: "November 2022 - May 2026",
-    description: "I am currently pursuing my Bachelor's degree in Electronics and Communication Engineering at the Anil Neerukonda institute of Technology & Sciences.",
-    icon: AnitsImg,
-  }
+  },
 ]
+  //  {
+  //   id: 4,
+  //   title: "Bachelor of Technology in Electronics and Communication Engineering",
+  //   role: "Undergraduate student",
+  //   date: "November 2022 - May 2026",
+  //   description: "I am currently pursuing my Bachelor's degree in Electronics and Communication Engineering at the Anil Neerukonda institute of Technology & Sciences.",
+  //   icon: AnitsImg,
+  // }
 
 const Experience = () => {
   return (
@@ -57,7 +58,7 @@ const Experience = () => {
 
           >
             <div>
-              <h3 className='text-xl font-bold'>{experience.title}</h3>
+              <h3 className='text-xl'>{experience.title}</h3>
               <h4 className='text-lg'>{experience.role}</h4>
               <ul className='px-8 text-slate-400 text-sm sm:text-lg leading-relaxed py-4'>
                 <li className='list-disc'>
