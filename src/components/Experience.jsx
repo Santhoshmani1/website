@@ -46,7 +46,7 @@ const Experience = () => {
     <section id='experience' className='bg-black text-gray-400'>
       <SpaceContainer />
       <h2 className='text-2xl lg:text-4xl text-center py-8'>Experience</h2>
-      <VerticalTimeline animate={true} layout='1-column-left' lineColor='#069aed' className='lg:w-3/5 w-5/6'>
+      <VerticalTimeline animate={false} layout='1-column-left' lineColor='#069aed' className='lg:w-3/5 w-5/6'>
         
         {experienceDetails.map((experience) => (
           <VerticalTimelineElement
@@ -60,7 +60,7 @@ const Experience = () => {
             <div>
               <h3 className='text-xl'>{experience.title}</h3>
               <h4 className='text-lg'>{experience.role}</h4>
-              <ul className='px-8 text-slate-400 text-sm sm:text-lg leading-relaxed py-4'>
+              <ul className='lg:px-8 px-2 text-slate-400 text-sm sm:text-lg leading-relaxed py-4'>
                 <li className='list-disc'>
                   {experience.description}
                 </li></ul>
