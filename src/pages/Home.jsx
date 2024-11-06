@@ -3,10 +3,12 @@ import { Header, Projects, Footer, SpaceContainer } from "../components";
 import CursorFollowingGraph from "../components/CursorFollowingGraph";
 import { SiGmail } from "react-icons/si";
 import Experience from "../components/Experience";
+import { Analytics } from "@vercel/analytics/react";
 
 const Home = () => {
   return (
     <>
+      <Analytics  />
       <Header />
       <div
         className="relative flex flex-col justify-center min-h-screen my-auto font-mono lg:items-start home-hero bg-gray-900 text-white fadeIn"
