@@ -32,26 +32,20 @@ const experienceDetails = [
     description: "Selected as an apprentice in the summer of bitcoin program, where I learned about the fundamentals of bitcoin, blockchain, and cryptography.",
   },
 ]
-  //  {
-  //   id: 4,
-  //   title: "Bachelor of Technology in Electronics and Communication Engineering",
-  //   role: "Undergraduate student",
-  //   date: "November 2022 - May 2026",
-  //   description: "I am currently pursuing my Bachelor's degree in Electronics and Communication Engineering at the Anil Neerukonda institute of Technology & Sciences.",
-  //   icon: AnitsImg,
-  // }
 
 const Experience = () => {
   return (
     <section id='experience' className='bg-black text-gray-400'>
       <SpaceContainer />
       <h2 className='text-2xl lg:text-4xl text-center py-8'>Experience</h2>
-      <VerticalTimeline animate={false} layout='1-column-left' lineColor='#069aed' className='lg:w-3/5 w-5/6'>
+      <VerticalTimeline animate={true} layout='1-column-left' lineColor='#069aed' className='lg:w-3/5 w-5/6' >
         
         {experienceDetails.map((experience) => (
           <VerticalTimelineElement
             key={experience.id}
-            date={experience.date}
+            date={
+              <div className="flex items-center justify-center text-center"><span className='material-icons px-2'>schedule</span>{ experience.date}</div>
+            }
              iconStyle={{ background: '#fff', color: '#fff' }}
             icon={<img src={experience?.icon} alt={experience?.title}  className='rounded-full'/>}
             contentStyle={{ background: 'rgb(3,7,18)', color: '#fff' }}

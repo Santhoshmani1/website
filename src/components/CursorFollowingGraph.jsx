@@ -16,18 +16,18 @@ const CursorFollowingGraph = () => {
 
     const mouse = { x: -100, y: -100 }; // Initialize mouse position off-screen
 
-    const handleMouseMove = (event) => {
-      const rect = canvasSection.getBoundingClientRect();
-      mouse.x = event.clientX - rect.left;
-      mouse.y = event.clientY - rect.top;
-    };
+    // const handleMouseMove = (event) => {
+    //   const rect = canvasSection.getBoundingClientRect();
+    //   mouse.x = event.clientX - rect.left;
+    //   mouse.y = event.clientY - rect.top;
+    // };
 
-    const handleResize = () => {
-      width = canvasSection.offsetWidth;
-      height = canvasSection.offsetHeight;
-      canvas.width = width;
-      canvas.height = height;
-    };
+    // const handleResize = () => {
+    //   width = canvasSection.offsetWidth;
+    //   height = canvasSection.offsetHeight;
+    //   canvas.width = width;
+    //   canvas.height = height;
+    // };
 
     // Particle class to manage individual particles
     class Particle {
