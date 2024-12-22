@@ -25,7 +25,6 @@ const projectsList = [
       { name: "React", color: "#069", icon: <SiReact /> },
       { name: "Node.js", color: "green", icon: <SiNodedotjs /> },
       { name: "Express.js", color: "gray", icon: <SiExpress /> },
-      { name: "Gemini", color: "red", icon: <GiGemini /> },
       { name: "Tailwind CSS", color: "#069aed", icon: <SiTailwindcss /> },
     ],
     githubSource: "https://www.github.com/santhoshmani1/Play-Monitor",
@@ -78,7 +77,7 @@ const Projects = () => {
       </div>
         <h3 className="text-center py-4 font-normal">I like to work on side projects on my free time :)</h3>
 
-      <div className="flex justify-center p-2 m-auto lg:gap-5 projects-list sm:flex-row flex-col w-4/5 lg:w-3/4 items-stretch">
+      <div className="flex justify-center p-2 m-auto lg:gap-5 projects-list  flex-col w-5/6 lg:w-3/4 items-stretch">
         {projectsList.map((project) => {
           const {
             id,
@@ -96,19 +95,19 @@ const Projects = () => {
               <h3 className="py-2 text-2xl text-center text-slate-300 flex self-center gap-2">
                 {title}
               </h3>
-              <div className="flex flex-col">
+              <div className="flex flex-col lg:w-3/4 text-center m-auto">
                 <div className="flex-col text-sm ">
                   <div className="w-full">
                     <p className="p-2 leading-relaxed tracking-normal">
                       {description}
                     </p>
                   </div>
-                  <div className="flex flex-wrap gap-1 px-2 py-4 items-center justify-center sm:justify-normal">
+                  <div className="flex flex-wrap gap-1 px-2 py-4 items-center justify-center">
                     {technologies.map((tech, index) => {
                       return (
                         <div
                           key={index}
-                          className="flex items-center justify-center p-2 my-0.5 text-xs bg-gray-900 rounded-lg"
+                          className="flex items-center justify-center p-3 my-0.5 text-xs bg-gray-900 rounded-lg"
                         >
                           <span style={{ color: tech.color }}>{tech.icon}</span>
                           <span className="pl-2">{tech.name}</span>

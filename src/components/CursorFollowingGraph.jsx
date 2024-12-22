@@ -3,7 +3,7 @@ import { useRef, useEffect } from "react";
 const CursorFollowingGraph = () => {
   const canvasRef = useRef(null);
   const particlesRef = useRef([]); // Keep the particles in a useRef to maintain reference
-  const maxParticles = 260;
+  const maxParticles = 150;
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -15,19 +15,6 @@ const CursorFollowingGraph = () => {
     canvas.height = height;
 
     const mouse = { x: -100, y: -100 }; // Initialize mouse position off-screen
-
-    // const handleMouseMove = (event) => {
-    //   const rect = canvasSection.getBoundingClientRect();
-    //   mouse.x = event.clientX - rect.left;
-    //   mouse.y = event.clientY - rect.top;
-    // };
-
-    // const handleResize = () => {
-    //   width = canvasSection.offsetWidth;
-    //   height = canvasSection.offsetHeight;
-    //   canvas.width = width;
-    //   canvas.height = height;
-    // };
 
     // Particle class to manage individual particles
     class Particle {

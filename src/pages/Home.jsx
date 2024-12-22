@@ -31,7 +31,7 @@ const Home = () => {
               target="_blank"
               rel="noreferrer"
               aria-label={"github"}
-              className="flex items-center transition duration-500 justify-evenly lg:text-xl py-2 px-6 rounded-xl cursor-pointer border-2 text-slate-100 border-slate-400 hover:bg-black hover:text-white hover:border-white"
+              className="flex items-center transition duration-500 justify-evenly lg:text-xl py-2 px-6 rounded-xl cursor-pointer border-2 text-slate-100 border-slate-400 hover:bg-black hover:text-white hover:border-white bg-slate-950 hover:bg-black hover:border-white"
             >
               <span className="px-1">
                 <FaGithub />
