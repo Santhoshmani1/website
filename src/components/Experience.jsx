@@ -2,7 +2,6 @@ import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeli
 import Stanford from '../assets/experience/stanford.png'
 import SummerofBitcoinIcon from "../assets/experience/summerofbitcoin.png";
 import IIMVIcon from "../assets/experience/iimv.png";
-import AnitsImg from "../assets/experience/anits.jpg"
 import 'react-vertical-timeline-component/style.min.css';
 import SpaceContainer from './SpaceContainer';
 
@@ -54,7 +53,7 @@ const Experience = () => {
             <div>
               <h3 className='text-xl'>{experience.title}</h3>
               <h4 className='text-lg'>{experience.role}</h4>
-              <ul className='lg:px-8 px-2 text-slate-400 text-sm sm:text-lg leading-relaxed py-4'>
+              <ul className='lg:px-8 px-2 text-slate-300 text-sm sm:text-lg leading-relaxed py-4'>
                 <li className='list-disc'>
                   {experience.description}
                 </li></ul>

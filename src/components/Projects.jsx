@@ -12,7 +12,6 @@ import playStoreIcon from "../assets/playstore.avif";
 import InferhubImg from "../assets/inferhub.png";
 import ClearspaceImg from "../assets/clearspace.png";
 import SpaceContainer from "./SpaceContainer";
-import { GiGemini } from "react-icons/gi";
 
 const projectsList = [
   {
@@ -90,7 +89,7 @@ const Projects = () => {
           return (
             <div
               key={id}
-              className="px-2 py-4 mx-auto my-4 text-gray-400 duration-200 md:w-4/5 sm:w-full rounded-2xl bg-slate-950 hover:bg-slate-950 border  border-gray-600 flex flex-col justify-around"
+              className="px-2 py-4 mx-auto my-4 text-gray-200 duration-200 md:w-4/5 sm:w-full rounded-2xl bg-slate-950 hover:bg-slate-950 border  border-gray-600 flex flex-col justify-around"
             >
               <h3 className="py-2 text-2xl text-center text-slate-300 flex self-center gap-2">
                 {title}
@@ -98,7 +97,7 @@ const Projects = () => {
               <div className="flex flex-col lg:w-3/4 text-center m-auto">
                 <div className="flex-col text-sm ">
                   <div className="w-full">
-                    <p className="p-2 leading-relaxed tracking-normal">
+                    <p className="p-2 leading-relaxed tracking-normal text-slate-300">
                       {description}
                     </p>
                   </div>
