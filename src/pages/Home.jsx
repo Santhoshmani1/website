@@ -25,7 +25,7 @@ const Home = () => {
           <h3 className="text-2xl py-4 text-left sm:text-3xl lg:text-4xl lg:pt-12 tracking-tight font-normal text-white">
             Connect With Me
           </h3>
-          <div className="flex flex-col sm:flex-row w-3/5 justify-start">
+          <div className="flex flex-col sm:flex-row sm:w-3/5 w-5/6 justify-start">
             <a
               href="https://github.com/santhoshmani1"
               target="_blank"
