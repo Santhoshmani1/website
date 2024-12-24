@@ -3,7 +3,7 @@ import { useRef, useEffect } from "react";
 const CursorFollowingGraph = () => {
   const canvasRef = useRef(null);
   const particlesRef = useRef([]); // Keep the particles in a useRef to maintain reference
-  const maxParticles = 150;
+  const maxParticles = 160;
 
   useEffect(() => {
     const canvas = canvasRef.current;

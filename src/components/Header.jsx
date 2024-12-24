@@ -17,7 +17,7 @@ const Header = () => {
     <header className="p-1 z-20 w-full shadow-md bg-slate-800 text-white border-b border-b-slate-600 rounded-sm fixed">
       <div className="container px-4 py-2 mx-auto lg:px-6 md:flex md:items-center md:justify-evenly">
         <div className="flex items-center justify-between">
-          <div className="text-xl font-semibold lg:text-3xl">
+          <div className="text-xl lg:text-3xl">
             <Link
               to="/"
               className="text-center transition duration-200 hover:text-blue-400"

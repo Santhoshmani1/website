@@ -51,8 +51,8 @@ const Experience = () => {
 
           >
             <div>
-              <h3 className='text-xl'>{experience.title}</h3>
-              <h4 className='text-lg'>{experience.role}</h4>
+              <h3 className='text-xl text-blue-400'>{experience.title}</h3>
+              <h4 className='text-lg text-yellow-500'>{experience.role}</h4>
               <ul className='lg:px-8 px-2 text-slate-300 text-sm sm:text-lg leading-relaxed py-4'>
                 <li className='list-disc'>
                   {experience.description}

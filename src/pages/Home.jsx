@@ -25,13 +25,13 @@ const Home = () => {
           <h3 className="text-2xl py-4 text-left sm:text-3xl lg:text-4xl lg:pt-12 tracking-tight font-normal text-white">
             Connect With Me
           </h3>
-          <div className="flex flex-row space-x-4">
+          <div className="flex flex-col sm:flex-row w-3/5 justify-start">
             <a
               href="https://github.com/santhoshmani1"
               target="_blank"
               rel="noreferrer"
               aria-label={"github"}
-              className="flex items-center transition duration-500 justify-evenly lg:text-xl py-3 px-12 rounded-xl cursor-pointer border-2 text-slate-100 border-slate-400 hover:text-white bg-slate-950 hover:bg-black hover:border-white"
+              className="flex items-center transition duration-500 justify-evenly lg:text-xl py-3 my-4 mx-2 px-12 rounded-xl cursor-pointer border-2 text-slate-100 border-slate-400 hover:text-white bg-slate-950 hover:bg-black hover:border-white"
             >
               <span className="px-1">
                 <FaGithub />
@@ -44,7 +44,7 @@ const Home = () => {
               target="_blank"
               rel="noreferrer"
               aria-label={"mail"}
-              className="flex items-center transition duration-500 justify-evenly lg:text-xl py-3 lg:py-3 px-12 rounded-xl cursor-pointer border-2  text-slate-100 border-slate-400 bg-gray-950 hover:bg-black hover:text-white hover:border-white"
+              className="flex items-center transition duration-500 justify-evenly lg:text-xl py-3 my-4 mx-2 lg:py-3 px-12 rounded-xl cursor-pointer border-2  text-slate-100 border-slate-400 bg-gray-950 hover:bg-black hover:text-white hover:border-white"
             >
               <span className="px-1">
                 <SiGmail />
