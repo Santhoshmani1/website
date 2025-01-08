@@ -5,12 +5,16 @@ import {
   SiHtml5,
   SiJavascript,
   SiNodedotjs,
+  SiPython,
   SiReact,
   SiTailwindcss,
 } from "react-icons/si";
+import { FaJava } from "react-icons/fa6";
 import playStoreIcon from "../assets/playstore.avif";
 import InferhubImg from "../assets/inferhub.png";
 import ClearspaceImg from "../assets/clearspace.png";
+import CanvasImg from "../assets/canvas.png";
+import EncodexImg from "../assets/encodex.png";
 import SpaceContainer from "./SpaceContainer";
 
 const projectsList = [
@@ -59,6 +63,32 @@ const projectsList = [
     githubSource: "https://www.github.com/santhoshmani1/Clear-space",
     liveLink: "",
   },
+  {
+      id: 4,
+      title: "EncodeX",
+      coverImage: EncodexImg,
+      description:
+        "Encodex is a simple command-line interface (CLI) tool for encoding and decoding operations. It supports various encoding formats such as Base64, ASCII, URL, Hex, and HTML and also decoding JWT Tokens",
+      category: "CLI",
+      technologies: [
+        { name: "Python", color: "#069", icon: <SiPython /> },
+      ],
+      githubSource: "https://github.com/Santhoshmani1/encodex",
+      liveLink: "",
+    },
+  {
+      id: 5,
+      title: "Canvas",
+      coverImage: "",
+      description:
+        "Canvas is a simple, easy-to-use Java application that allows users to draw on a digital canvas. It provides various tools such as a brush, eraser, color picker, and the ability to save your artwork.",
+      category: "GUI",
+      technologies: [
+        { name: "Java", color: "#069", icon: <FaJava /> },
+      ],
+      githubSource: "https://github.com/Santhoshmani1/Canvas",
+      liveLink: "",
+    }
 ];
 
 const Projects = () => {
@@ -76,10 +106,11 @@ const Projects = () => {
       </div>
         <h3 className="text-center py-4 font-normal">I like to work on side projects on my free time :)</h3>
 
-      <div className="flex justify-center p-2 m-auto lg:gap-5 projects-list  flex-col w-5/6 lg:w-3/4 items-stretch">
+      <div className="flex justify-center p-2 m-auto lg:gap-5 projects-list  flex-col w-11/12 lg:w-3/4 items-stretch">
         {projectsList.map((project) => {
           const {
             id,
+            coverImage,
             title,
             description,
             githubSource,
@@ -97,7 +128,8 @@ const Projects = () => {
               <div className="flex flex-col lg:w-3/4 text-center m-auto">
                 <div className="flex-col text-sm ">
                   <div className="w-full">
-                    <p className="p-2 leading-relaxed tracking-normal text-slate-300">
+                    {coverImage && <img src={coverImage} className="lg:max-w-64 lg:h-48 h-40" /> }
+                    <p className="p-2 leading-relaxed tracking-normal text-slate-300 text-left pl-8">
                       {description}
                     </p>
                   </div>
