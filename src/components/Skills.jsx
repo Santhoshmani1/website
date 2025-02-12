@@ -73,7 +73,6 @@ const Skills = () => {
   return (
     <div
       className="px-2 py-10 skills-container dark:bg-slate-900 dark:text-slate-200"
-      style={{ fontFamily: "Montserrat" }}
       id="skills"
     >
       <h2 className="px-10 py-12 text-3xl font-bold leading-relaxed text-center">

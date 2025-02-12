@@ -1,6 +1,8 @@
 import { useRef, useEffect } from "react";
+import { useTheme } from "../context/ThemeContext";
 
 const CursorFollowingGraph = () => {
+  const { theme } = useTheme();
   const canvasRef = useRef(null);
   const particlesRef = useRef([]); // Keep the particles in a useRef to maintain reference
   const maxParticles = 160;
@@ -65,7 +67,7 @@ const CursorFollowingGraph = () => {
             (particlesRef.current[i].y - particlesRef.current[j].y) ** 2;
 
           if (distance < 5000) {
-            ctx.strokeStyle = "rgba(255,255, 255, 0.1)"; // Edge color
+            ctx.strokeStyle = theme === "light" ? "rgba(0, 0, 0, 0.8)" : "rgba(255, 255, 255, 0.1)"; // Edge color based on theme
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(particlesRef.current[i].x, particlesRef.current[i].y);
@@ -93,19 +95,14 @@ const CursorFollowingGraph = () => {
       requestAnimationFrame(animate);
     };
 
-    // canvasSection.addEventListener("mousemove", handleMouseMove);
-    // window.addEventListener("resize", handleResize);
-
     const randomParticleInterval = setInterval(createRandomParticles, 1); // Create random particles every 500ms
 
-    animate(); // Start the animation
+    animate(); 
 
     return () => {
-      // canvasSection.removeEventListener("mousemove", handleMouseMove);
-      // window.removeEventListener("resize", handleResize);
-      clearInterval(randomParticleInterval); // Clear the interval on cleanup
+      clearInterval(randomParticleInterval); 
     };
-  }, []);
+  }, [theme]);
 
   return (
     <canvas ref={canvasRef} className="absolute top-0 left-0 w-full h-full" />
