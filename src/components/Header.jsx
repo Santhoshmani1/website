@@ -19,7 +19,7 @@ const Header = () => {
   useEffect(() => {
     if (headerRef.current) {
       if (theme === "light") {
-        headerRef.current.classList.remove("bg-slate-900", "border-b-slate-600");
+        headerRef.current.classList.remove("bg-slate-900", "border-b-slate-600", "text-white");
         headerRef.current.classList.add("bg-sky-50", "border-b-gray-200", "text-black");
       } else {
         headerRef.current.classList.remove("bg-sky-50", "border-b-gray-200", "text-black");
