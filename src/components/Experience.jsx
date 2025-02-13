@@ -2,42 +2,11 @@ import {
   VerticalTimeline,
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
-import Stanford from "../assets/experience/stanford.png";
-import SummerofBitcoinIcon from "../assets/experience/summerofbitcoin.png";
-import IIMVIcon from "../assets/experience/iimv.png";
 import "react-vertical-timeline-component/style.min.css";
-import SpaceContainer from "./SpaceContainer";
-import { useTheme } from "../context/ThemeContext";
 
-const experienceDetails = [
-  {
-    id: 1,
-    title: "Indian Institute of Management, Vizag",
-    role: "Web developer Intern",
-    date: "August 2024 - October 2024",
-    icon: IIMVIcon,
-    description:
-      "I worked on the development of the Inter-Disciplinary Decision sciences & Analytics Lab website, and built Automation tooling for data extraction, processing from Images and PDFs using Optical Character Recognition (OCR) and Natural Language Processing (NLP) techniques using Python.",
-  },
-  {
-    id: 2,
-    title: "Stanford Codein Place",
-    role: "Section Leader",
-    date: "April 2024 - May 2024",
-    icon: Stanford,
-    description:
-      "I Volunteered as section leader during the summer over the course of 6 weeks & taught 15 people from 8 different countries to assist  about karel(an interactive game to learn to code), programming in python and computer graphics.",
-  },
-  {
-    id: 3,
-    title: "Summer Of Bitcoin",
-    role: "Apprentice",
-    date: "February 2024 - March 2024",
-    icon: SummerofBitcoinIcon,
-    description:
-      "Selected as an apprentice in the summer of bitcoin program, where I learned about the fundamentals of bitcoin, blockchain, and cryptography.",
-  },
-];
+import { useTheme } from "../context/ThemeContext";
+import { experienceDetails } from "../data/details.jsx";
+import SpaceContainer from "./SpaceContainer";
 
 const Experience = () => {
   const { theme } = useTheme();

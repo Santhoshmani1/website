@@ -1,24 +1,7 @@
-import { FaLinkedinIn, FaGithub } from "react-icons/fa";
-import { SiGmail } from "react-icons/si";
-import { useTheme } from "../context/ThemeContext";
 
-const socials = [
-  {
-    name: "Mail",
-    url: "mailto:pitakasanthosh@gmail.com",
-    icon: <SiGmail />,
-  },
-  {
-    name: "GitHub",
-    url: "https://github.com/santhoshmani1",
-    icon: <FaGithub />,
-  },
-  {
-    name: "LinkedIn",
-    url: "https://www.linkedin.com/in/santhoshmanip",
-    icon: <FaLinkedinIn />,
-  },
-];
+import { useTheme } from "../context/ThemeContext";
+import { socials } from "../data/details.jsx";
+
 
 const Footer = () => {
   const { theme } = useTheme();
