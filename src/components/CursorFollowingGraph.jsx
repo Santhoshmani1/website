@@ -67,7 +67,7 @@ const CursorFollowingGraph = () => {
             (particlesRef.current[i].y - particlesRef.current[j].y) ** 2;
 
           if (distance < 5000) {
-            ctx.strokeStyle = theme === "light" ? "rgba(0, 0, 0, 0.8)" : "rgba(255, 255, 255, 0.1)"; // Edge color based on theme
+            ctx.strokeStyle = theme === "light" ? "rgba(0, 0, 0, 0.1)" : "rgba(255, 255, 255, 0.1)"; // Edge color based on theme
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(particlesRef.current[i].x, particlesRef.current[i].y);
@@ -95,14 +95,17 @@ const CursorFollowingGraph = () => {
       requestAnimationFrame(animate);
     };
 
-    const randomParticleInterval = setInterval(createRandomParticles, 1); // Create random particles every 500ms
+    const randomParticleInterval = setInterval(createRandomParticles, 100); // Create random particles every 100ms
 
     animate(); 
 
     return () => {
       clearInterval(randomParticleInterval); 
+      particlesRef.current = [];
+      mouse.x = -100;
+      mouse.y = -100; 
     };
-  }, [theme]);
+  }, [theme]); // Re-run the effect when the theme changes
 
   return (
     <canvas ref={canvasRef} className="absolute top-0 left-0 w-full h-full" />

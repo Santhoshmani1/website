@@ -33,7 +33,7 @@ const Projects = () => {
           return (
             <div
               key={id}
-              className={`px-2 py-4 mx-auto my-4 duration-200 md:w-4/5 sm:w-full rounded-2xl ${theme === "light" ? "bg-white text-black border-gray-200" : "bg-slate-950 text-gray-200 border-gray-600"} flex flex-col justify-around`}
+              className={`px-2 py-4 mx-auto my-4 duration-200 md:w-4/5 sm:w-full rounded-2xl ${theme === "light" ? "bg-gray-50 text-black border-gray-200" : "bg-slate-950 text-gray-200 border-gray-600"} flex flex-col justify-around`}
             >
               <h3 className="flex self-center gap-2 py-2 text-2xl text-center">
                 {title}

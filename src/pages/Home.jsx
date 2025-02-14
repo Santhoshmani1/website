@@ -1,9 +1,10 @@
-import { FaGithub } from "react-icons/fa";
-import { Header, Projects, Footer, SpaceContainer } from "../components";
-import CursorFollowingGraph from "../components/CursorFollowingGraph";
-import { SiGmail } from "react-icons/si";
-import Experience from "../components/Experience";
 import { Analytics } from "@vercel/analytics/react";
+import { FaGithub } from "react-icons/fa";
+import { SiGmail } from "react-icons/si";
+
+import CursorFollowingGraph from "../components/CursorFollowingGraph";
+import Experience from "../components/Experience";
+import { Header, Projects, Footer, SpaceContainer } from "../components";
 import { useTheme } from "../context/ThemeContext";
 
 const Home = () => {
@@ -29,13 +30,13 @@ const Home = () => {
           <h3 className="py-4 text-2xl font-normal tracking-tight text-left sm:text-3xl lg:text-4xl lg:pt-12">
             Connect With Me
           </h3>
-          <div className="flex flex-col justify-start w-5/6 sm:flex-row sm:w-3/5">
+          <div className="flex justify-start w-1/3 sm:flex-row sm:w-3/5">
             <a
               href="https://github.com/santhoshmani1"
               target="_blank"
               rel="noreferrer"
               aria-label={"github"}
-              className="flex items-center px-12 py-3 mx-2 my-4 text-white transition duration-500 border-2 cursor-pointer justify-evenly lg:text-xl rounded-xl border-slate-400 hover:text-white bg-slate-950 hover:bg-black hover:border-white"
+              className="flex items-center px-4 py-3 mx-2 my-4 text-white transition duration-500 border-2 cursor-pointer lg:px-12 justify-evenly lg:text-xl rounded-xl border-slate-400 hover:text-blue-400 bg-slate-950 hover:bg-black hover:border-sky-600"
             >
               <span className="px-1">
                 <FaGithub />
@@ -48,7 +49,7 @@ const Home = () => {
               target="_blank"
               rel="noreferrer"
               aria-label={"mail"}
-              className="flex items-center px-12 py-3 mx-2 my-4 text-white transition duration-500 border-2 cursor-pointer justify-evenly lg:text-xl lg:py-3 rounded-xl border-slate-400 bg-gray-950 hover:bg-black hover:text-white hover:border-white"
+              className="flex items-center px-4 py-3 mx-2 my-4 text-white transition duration-500 border-2 cursor-pointer lg:px-12 justify-evenly lg:text-xl lg:py-3 rounded-xl hover:border-sky-600 bg-gray-950 hover:bg-black hover:text-blue-400"
             >
               <span className="px-1">
                 <SiGmail />
