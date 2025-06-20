@@ -1,89 +1,111 @@
-import { FaGithub } from "react-icons/fa";
-import { useTheme } from "../context/ThemeContext";
-import { projectsList } from "../data/details.jsx";
-import SpaceContainer from "./SpaceContainer";
-
+import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import { projects } from "../constants";
+import { SpaceContainer } from "../components";
+import { PsyduckAtWorkImg } from "../assets";
 
 const Projects = () => {
-  const { theme } = useTheme();
+	return (
+		<section id="projects" className="relative py-16 text-slate-200">
+			<SpaceContainer />
 
-  return (
-    <section
-      id="projects"
-      className={`font-sans py-4 ${theme === "light" ? "bg-gray-100 text-black" : "bg-gray-950 text-slate-200"}`}
-    >
-      <SpaceContainer />
-      <div className="flex flex-col items-center justify-center md:flex-row">
-        <h2 className="px-10 m-2 text-4xl font-bold leading-relaxed text-center">
-          Projects
-        </h2>
-      </div>
-      <h3 className="p-4 font-normal text-center ">I like to work on side projects on my free time :)</h3>
-      <div className="flex flex-col items-stretch justify-center w-11/12 p-2 m-auto lg:gap-5 projects-list lg:w-3/4">
-        {projectsList.map((project) => {
-          const {
-            id,
-            coverImage,
-            title,
-            description,
-            githubSource,
-            technologies,
-            liveLink,
-          } = project;
-          return (
-            <div
-              key={id}
-              className={`px-2 py-4 mx-auto my-4 duration-200 md:w-4/5 sm:w-full rounded-2xl ${theme === "light" ? "bg-gray-50 text-black border-gray-200" : "bg-slate-950 text-gray-200 border-gray-600"} flex flex-col justify-around`}
-            >
-              <h3 className="flex self-center gap-2 py-2 text-2xl text-center">
-                {title}
-              </h3>
-              <div className="flex flex-col m-auto text-center lg:w-3/4">
-                <div className="flex-col text-sm ">
-                  <div className="w-full">
-                    {coverImage && <img src={coverImage} className="w-3/4 h-40 lg:max-w-64 lg:h-48" />}
-                    <p className="p-2 pl-8 leading-relaxed tracking-normal text-left">
-                      {description}
-                    </p>
-                  </div>
-                  <div className="flex flex-wrap items-center justify-center gap-1 px-2 py-4">
-                    {technologies.map((tech, index) => {
-                      return (
-                        <div
-                          key={index}
-                          className={`flex items-center justify-center p-3 my-0.5 text-xs rounded-lg ${theme === "light" ? "bg-gray-200 text-black" : "bg-gray-900 text-white"}`}
-                        >
-                          <span style={{ color: tech.color }}>{tech.icon}</span>
-                          <span className="pl-2">{tech.name}</span>
-                        </div>
-                      );
-                    })}
-                  </div>
-                  <div className="flex flex-row items-center justify-center links-container">
-                    {liveLink && (
-                      <a
-                        className={`p-2 m-2 underline duration-300 rounded-lg ${theme === "light" ? "hover:text-black hover:bg-gray-200" : "hover:text-white hover:bg-gray-800"} transition-all`}
-                        href={liveLink}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        View Live 🌐
-                      </a>
-                    )}
-                    <a href={githubSource} target="_blank" rel="noreferrer">
-                      <button className={`p-2 underline duration-300 rounded-lg ${theme === "light" ? "hover:text-black hover:bg-gray-200" : "hover:text-white hover:bg-gray-800"} transition-all`}>
-                        View source <FaGithub className="inline-block" />{" "}
-                      </button>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )
-        })}
-      </div>
-    </section>
-  );
-}
+			<div className="container px-4 mx-auto">
+				<div className="flex flex-col items-center justify-center mb-12">
+					<h2 className="my-6 text-4xl font-bold tracking-tighter bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text">
+						Projects
+					</h2>
+					<div className="w-16 h-px mx-auto mb-6 bg-gradient-to-r from-transparent via-sky-400 to-transparent"></div>
+					<p className="max-w-2xl text-lg text-center text-gray-300">
+						I like to work on side projects in my free time
+					</p>
+				</div>
+
+				<div className="max-w-6xl mx-auto">
+					<img
+						src={PsyduckAtWorkImg}
+						alt="work"
+						className="object-cover w-32 h-32 p-1 mx-auto mb-10 border-2 rounded-full md:w-auto md:h-36 border-indigo-500/30"
+					/>
+
+					<div className="grid max-w-3xl grid-cols-1 gap-8 mx-auto">
+						{projects.map((project) => {
+							const {
+								id,
+								coverImage,
+								title,
+								description,
+								githubSource,
+								technologies,
+								liveLink,
+							} = project;
+
+							return (
+								<div
+									key={id}
+									className="overflow-hidden transition-all duration-300 border border-t-8 shadow-lg border-t-sky-100 border-gray-950 backdrop-blur-sm bg-gray-900/30 rounded-xl hover:shadow-2xl hover:border-sky-500 group">
+									<div className="p-6">
+										<h3 className="mb-3 font-mono text-2xl font-semibold text-white transition-colors group-hover:text-blue-400">
+											{title}
+										</h3>
+
+										<div className="mb-4">
+											{coverImage && (
+												<img
+													src={coverImage}
+													alt={title}
+													className="object-cover w-full h-48 mb-4 transition-opacity rounded-lg hover:opacity-90"
+												/>
+											)}
+
+											<p className="p-2 text-sm leading-relaxed text-gray-300 md:text-base">
+												{description}
+											</p>
+										</div>
+
+										<div className="flex flex-wrap gap-2 mb-5">
+											{technologies.map((tech, index) => (
+												<span
+													key={index}
+													className="inline-flex items-center px-3 py-1 font-mono text-xs font-medium text-gray-200 border border-gray-700 rounded-full bg-gray-800/80">
+													<span
+														className="mr-1.5"
+														style={{ color: tech.color }}>
+														{tech.icon}
+													</span>
+													{tech.name}
+												</span>
+											))}
+										</div>
+
+										<div className="flex justify-start pt-2 space-x-4">
+											{liveLink && (
+												<a
+													className="flex items-center gap-2 text-sm font-medium text-blue-400 transition-colors hover:text-blue-300 hover:scale-105 hover:underline"
+													href={liveLink}
+													target="_blank"
+													rel="noreferrer">
+													<FaExternalLinkAlt className="text-xs" />
+													<span>View Live</span>
+												</a>
+											)}
+
+											<a
+												href={githubSource}
+												target="_blank"
+												rel="noreferrer"
+												className="flex items-center gap-2 text-sm font-medium text-gray-300 transition-colors hover:text-white hover:underline hover:scale-105">
+												<FaGithub />
+												<span>Source Code</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							);
+						})}
+					</div>
+				</div>
+			</div>
+		</section>
+	);
+};
 
 export default Projects;

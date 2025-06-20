@@ -1,50 +1,55 @@
-const PostCover = ({ blogPosts }) => {
-  return (
-    <div className="py-10 lg:grid lg:grid-cols-2">
-      {blogPosts.map((post) => {
-        const { title, coverImage, description, categories, slug, published } =
-          post;
-        return (
-          <div
-            key={slug}
-            className="flex flex-col items-center justify-center p-4 m-4 font-sans transition-all duration-700 ease-in-out border border-gray-600 shadow md:1/2 lg:justify-start rounded-xl hover:shadow-blue-800 shadow-sky-400 hover:bg-slate-900"
-          >
-            <a
-              href={"/blog/" + slug}
-              style={{ fontFamily: "Open sans, sans-serif" }}
-            >
-              <div className="flex flex-col sm:flex-row">
-                <img src={coverImage} className="w-40 h-40" alt="" />
-                <div className="flex flex-col p-2">
-                  <div className="p-2 text-xl text-center lg:text-2xl">
-                    {title}
-                  </div>
-                  <div className="m-2 text-lg text-gray-300">{description}</div>
-                </div>
-              </div>
-              <div className="flex items-center justify-evenly">
-                <div className="text-gray-800 dark:text-slate-400">
-                  {published}
-                </div>
-                <div className="flex items-center justify-evenly">
-                  {categories.map((tag, index) => {
-                    return (
-                      <span
-                        key={index}
-                        className="mx-4 text-sm text-gray-600 border-blue-600 lg:text-lg dark:text-slate-300 rounded-xl"
-                      >
-                        {tag}
-                      </span>
-                    );
-                  })}
-                </div>
-              </div>
-            </a>
-          </div>
-        );
-      })}
-    </div>
-  );
+import { Link } from "react-router-dom";
+
+import CoverImage from "./CoverImage";
+import NoPostsFound from "./NoPostsFound";
+import PostedDate from "./PostedDate";
+import PostDescription from "./PostDescription";
+import ReadMore from "./ReadMore";
+import TagContainer from "./TagContainer";
+
+const PostCover = ({ blogPosts, searchTerm = "", selectedTag = "" }) => {
+	const filteredPosts = blogPosts.filter((post) => {
+		const matchesSearch =
+			searchTerm === "" ||
+			post.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+			post.description?.toLowerCase().includes(searchTerm.toLowerCase());
+
+		const matchesTag = selectedTag === "" || (post.tags?.includes(selectedTag));
+		return matchesSearch && matchesTag;
+	});
+
+	if (filteredPosts.length === 0) {
+		return <NoPostsFound searchTerm={searchTerm} selectedTag={selectedTag} />;
+	}
+
+	return (
+		<div className="grid gap-8 mt-8">
+			{filteredPosts.map((post) => (
+				<Link
+					to={`/blog/${post.id}`}
+					key={post.id}
+					className="flex flex-col h-full overflow-hidden transition-all duration-300 blog-card ">
+					<h3 className="text-xl font-bold tracking-tight text-blue-400 lg:text-3xl hover:underline">
+						{post.title}
+					</h3>
+					<CoverImage
+						coverImageSrc={post?.cover_image}
+						altText={post.title}
+						className=""
+					/>
+					<PostDescription
+						content={post.content}
+						description={post.description}
+					/>
+					<ReadMore />
+					<div className="flex flex-wrap items-center mb-3 space-x-2 text-sm text-gray-600 dark:text-gray-400">
+						<PostedDate created_at={post.created_at} />
+						<TagContainer tags={post.tags} />
+					</div>
+				</Link>
+			))}
+		</div>
+	);
 };
 
 export default PostCover;

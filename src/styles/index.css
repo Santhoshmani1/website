@@ -1,55 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 * {
-  font-family: "Poppins", sans-serif;
+	font-family: "Noto Sans", sans-serif;
 }
 
 h1,
 h2 {
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  color: #069aed;
+	font-family: "Noto Sans", sans-serif;
+	font-weight: 600;
+	color: #069aed;
 }
 
-h3{
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  
+h3 {
+	font-family: "Noto Sans" sans-serif;
+	font-weight: 400;
 }
 
 html {
-  scroll-behavior: smooth;
+	scroll-behavior: smooth;
 }
 
 .fadeIn {
-  animation: fadeIn 1200ms ease-out;
+	animation: fadeIn 1200ms ease-out;
 }
 
 @keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
 }
 
 @media screen and (max-width: 620px) {
-  .nav-open {
-    max-height: 150px;
-    opacity: 1;
-    transition:
-      max-height 0.5s ease-in-out,
-      opacity 0.5s ease-in-out;
-  }
+	.nav-open {
+		max-height: 150px;
+		opacity: 1;
+		transition:
+			max-height 0.5s ease-in-out,
+			opacity 0.5s ease-in-out;
+	}
 
-  .nav-closed {
-    max-height: 0;
-    opacity: 0;
-    transition:
-      max-height 0.5s ease-in-out,
-      opacity 0.5s ease-in-out;
-  }
+	.nav-closed {
+		max-height: 0;
+		opacity: 0;
+		transition:
+			max-height 0.5s ease-in-out,
+			opacity 0.5s ease-in-out;
+	}
 }
