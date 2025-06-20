@@ -6,6 +6,7 @@ import {
 	PostCover,
 	LoadingAnimation,
 	ScrollProgress,
+	SpaceContainer,
 } from "../components";
 import "../styles/blogpost.css";
 import { fetchPosts } from "../api/posts";
@@ -73,16 +74,16 @@ const Blog = () => {
 			<ScrollProgress />
 			<Header />
 			<div
-				className="min-h-screen px-4 pt-12 font-mono bg-black md:px-6 lg:pt-20 text-slate-200 bg-grid-24-s-2-neutral-950"
-				id="canvas-bg">
-				<div className="flex flex-col max-w-5xl px-12 mx-auto">
+				className="min-h-screen px-4 pt-12 font-mono bg-black md:px-6 lg:pt-20 text-slate-200 bg-grid-24-s-2-neutral-950">
+				<div className="flex flex-col max-w-5xl px-4 mx-auto lg:px-12">
+					<SpaceContainer />
 					<h2
 						className="pt-4 font-mono text-2xl leading-relaxed text-center"
 						id="blog">
 						Blog
 					</h2>
 
-					<div className="flex flex-col items-center justify-between w-full gap-4 p-4 my-8 md:flex-row md:justify-between">
+					<div className="flex flex-col items-center justify-between gap-4 my-8 md:flex-row md:justify-between">
 						<div className="relative w-full md:w-1/2">
 							<FiSearch className="absolute text-gray-400 transform -translate-y-1/2 top-1/2 left-3" />
 							<input
@@ -94,7 +95,7 @@ const Blog = () => {
 							/>
 						</div>
 
-						<div className="flex items-center justify-between w-full gap-4 md:w-1/2">
+						<div className="flex flex-col items-center justify-between w-full gap-4 md:w-1/2">
 							<div className="flex items-center space-x-2">
 								<span className="text-sm font-bold text-gray-300">Sort:</span>
 								<button type="button"
@@ -102,7 +103,7 @@ const Blog = () => {
 										setSortDirection(sortDirection === "desc" ? "asc" : "desc")
 									}
 									className="flex items-center px-6 py-1.5 space-x-1 text-lg border border-gray-300 rounded-2xl hover:bg-gray-800">
-									<span>Date</span>
+									<span className="text-sm">Date</span>
 									{sortDirection === "desc" ? (
 										<FiArrowDown className="text-white" />
 									) : (
@@ -116,7 +117,7 @@ const Blog = () => {
 								<select
 									value={selectedTag}
 									onChange={(e) => setSelectedTag(e.target.value)}
-									className="px-6 mx-2 text-lg rounded-2xl py-1.5 border bg-gray-900 border-gray-700 text-white focus:outline-none focus:border-black">
+									className="px-2 md:text-lg rounded-2xl py-1.5 border bg-gray-900 border-gray-700 text-white focus:outline-none focus:border-black text-sm">
 									<option value="">All</option>
 									{allTags.map((tag) => (
 										<option key={tag} value={tag}>
