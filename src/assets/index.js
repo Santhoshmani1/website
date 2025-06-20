@@ -1,9 +1,15 @@
-import playStoreIcon from "./playstore.avif";
-import InferhubImg from "./inferhub.png";
 import ClearspaceImg from "./clearspace.png";
-import EncodexImg from "./encodex.png";
-import Stanford from "./experience/stanford.png";
-import SummerofBitcoinIcon from "./experience/summerofbitcoin.png";
+import DatacurveAiImg from "./experience/datacurve.jpg";
 import IIMVIcon from "./experience/iimv.png";
+import SIcon from "./S.png";
+import PsyduckImg from "./psyduck.jpg";
+import PsyduckAtWorkImg from "./psyduck-at-work.png";
 
-export { playStoreIcon, InferhubImg, ClearspaceImg, EncodexImg, Stanford, SummerofBitcoinIcon, IIMVIcon };
+export {
+	ClearspaceImg,
+	SIcon,
+	IIMVIcon,
+	PsyduckImg,
+	PsyduckAtWorkImg,
+	DatacurveAiImg,
+};
