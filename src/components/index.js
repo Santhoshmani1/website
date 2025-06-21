@@ -10,6 +10,7 @@ import Quote from "./shared/Quote.jsx";
 import ScrollProgress from "./shared/ScrollProgress.jsx";
 import LoadingAnimation from "./blog/LoadingAnimation.jsx";
 import RecentPosts from "./RecentPosts.jsx";
+import BackToTop from "./shared/BackToTop.jsx";
 
 export {
 	Experience,
@@ -24,4 +25,5 @@ export {
 	ScrollProgress,
 	LoadingAnimation,
 	RecentPosts,
+	BackToTop
 };
