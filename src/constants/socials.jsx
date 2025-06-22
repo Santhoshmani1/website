@@ -1,4 +1,5 @@
-import { FaGithub, FaLinkedinIn, FaTwitter } from "react-icons/fa";
+import { FaGithub, FaLinkedinIn } from "react-icons/fa";
+import { FaSquareXTwitter } from "react-icons/fa6";
 import { SiGmail } from "react-icons/si";
 
 const socials = [
@@ -20,7 +21,7 @@ const socials = [
 	{
 		name: "X",
 		url: "https://x.com/santhoshmani1",
-		icon: <FaTwitter />,
+		icon: <FaSquareXTwitter />,
 	},
 ];
 
