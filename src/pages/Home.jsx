@@ -85,7 +85,7 @@ const Home = () => {
 					</p>
 
 					<section id="hero-contact" className="lg:pt-8">
-						<h3 className="py-4 text-2xl text-white sm:text-3xl lg:text-4xl ">
+						<h3 className="md:py-4 pt-4 text-2xl text-white sm:text-3xl lg:text-4xl ">
 							Connect with Me
 						</h3>
 						<div className="flex flex-row gap-4">

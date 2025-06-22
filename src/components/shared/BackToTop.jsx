@@ -24,7 +24,7 @@ const BackToTop = () => {
     return (
         <>
             <button type="button" onClick={scrollToTop}
-                className="fixed z-20 p-4 text-base font-bold text-white transition duration-300 bg-blue-600 rounded-full shadow-lg bottom-12 right-4 hover:bg-sky-600 hover:cursor-pointer sm:mx-12 back-to-top hover:scale-110"
+                className="fixed z-20 p-4 text-base font-bold text-white transition duration-300 bg-sky-600 rounded-full shadow-lg bottom-12 right-4 hover:bg-blue-600 hover:cursor-pointer sm:mx-12 back-to-top hover:scale-110"
             >
                 <IoIosArrowUp className="text-sm font-light sm:text-base" />
             </button>

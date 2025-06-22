@@ -33,7 +33,7 @@ const PostCover = ({ blogPosts, searchTerm = "", selectedTag = "" }) => {
 					<h3 className="text-xl font-bold tracking-tight text-blue-400 lg:text-3xl hover:underline">
 						{post.title}
 					</h3>
-					<div className="flex flex-row space-x-3 text-sm text-gray-600 dark:text-gray-200 pt-2">
+					<div className="flex flex-row space-x-3 text-sm text-gray-600 dark:text-gray-200 pt-2 md:pt-4">
 						<PostedDate created_at={post.created_at} />
 						<ReadingTime text={post.content} />
 					</div>

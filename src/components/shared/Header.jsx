@@ -32,7 +32,7 @@ const Header = () => {
 					</div>
 					<div></div>
 					<button
-						className="material-icons sm:hidden"
+						className="material-icons sm:hidden border border-sky-700 rounded-full p-1 bg-gray-950"
 						title="menu" type="button"
 						onClick={() => {
 							setIsOpen(!isOpen);
@@ -51,7 +51,7 @@ const Header = () => {
 							<li key={item.label}>
 								<Link
 									to={item.path}
-									className="text-base leading-loose text-left transition duration-300 text-slate-300 hover:underline hover:text-blue-400"
+									className="text-base leading-loose text-left transition duration-300 text-slate-300 hover:underline hover:text-sky-400"
 									onClick={() => {
 										setIsOpen(false);
 										setMenuIcon("menu");
