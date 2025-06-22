@@ -25,7 +25,7 @@ const Experience = () => {
 						key={experience.id}
 						date={
 							<div className="flex items-center justify-center text-center text-white">
-								<span className="px-2 material-icons">schedule</span>
+								<span className="px-1 md:px-2 material-icons">schedule</span>
 								{experience.date}
 							</div>
 						}
@@ -45,7 +45,7 @@ const Experience = () => {
 							<h4 className="italic tracking-tight md:text-lg text-slate-100">
 								{experience.role}
 							</h4>
-							<ul className="px-2 py-4 text-sm leading-relaxed lg:px-8">
+							<ul className="py-4 text-sm font-light leading-relaxed md:px-2 lg:px-8">
 								{experience.description.map((desc, index) => (
 									<li
 										key={index}

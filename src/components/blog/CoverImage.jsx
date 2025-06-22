@@ -1,6 +1,6 @@
 const CoverImage = ({ title, coverImageSrc }) => {
 	return (
-		<div className="mb-8 overflow-hidden">
+		<div className="mb-4 overflow-hidden">
 			<img
 				src={coverImageSrc}
 				alt={title}

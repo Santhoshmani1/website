@@ -56,7 +56,7 @@ const Projects = () => {
 												/>
 											)}
 
-											<p className="p-2 text-sm leading-relaxed text-gray-300 md:text-base">
+											<p className="p-2 text-sm font-light leading-relaxed text-gray-300 md:text-base">
 												{description}
 											</p>
 										</div>

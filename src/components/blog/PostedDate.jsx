@@ -10,7 +10,7 @@ const formatDate = (dateString) => {
 
 const PostedDate = ({ created_at }) => {
 	return (
-		<div className="flex items-center text-lg">{formatDate(created_at)}</div>
+		<div className="flex items-center">{formatDate(created_at)}</div>
 	);
 };
 

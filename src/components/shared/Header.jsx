@@ -47,8 +47,8 @@ const Header = () => {
 						isOpen ? "nav-open" : "nav-closed"
 					} z-10`}>
 					<ul className="flex flex-col items-center justify-center md:flex-row md:space-x-10 md:space-y-0">
-						{navigationListItems.map((item, index) => (
-							<li key={index}>
+						{navigationListItems.map((item) => (
+							<li key={item.label}>
 								<Link
 									to={item.path}
 									className="text-base leading-loose text-left transition duration-300 text-slate-300 hover:underline hover:text-blue-400"

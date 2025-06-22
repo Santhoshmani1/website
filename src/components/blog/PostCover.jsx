@@ -6,6 +6,7 @@ import PostedDate from "./PostedDate";
 import PostDescription from "./PostDescription";
 import ReadMore from "./ReadMore";
 import TagContainer from "./TagContainer";
+import ReadingTime from "./ReadingTime";
 
 const PostCover = ({ blogPosts, searchTerm = "", selectedTag = "" }) => {
 	const filteredPosts = blogPosts.filter((post) => {
@@ -23,15 +24,19 @@ const PostCover = ({ blogPosts, searchTerm = "", selectedTag = "" }) => {
 	}
 
 	return (
-		<div className="grid gap-8 mt-8">
+		<div className="grid gap-8 m8 md:my-12">
 			{filteredPosts.map((post) => (
 				<Link
 					to={`/blog/${post.id}`}
 					key={post.id}
-					className="flex flex-col h-full overflow-hidden transition-all duration-300 blog-card ">
+					className="flex flex-col h-full overflow-hidden transition-all duration-300 blog-card my-4">
 					<h3 className="text-xl font-bold tracking-tight text-blue-400 lg:text-3xl hover:underline">
 						{post.title}
 					</h3>
+					<div className="flex flex-row space-x-3 text-sm text-gray-600 dark:text-gray-200 pt-2">
+						<PostedDate created_at={post.created_at} />
+						<ReadingTime text={post.content} />
+					</div>
 					<CoverImage
 						coverImageSrc={post?.cover_image}
 						altText={post.title}
@@ -42,10 +47,7 @@ const PostCover = ({ blogPosts, searchTerm = "", selectedTag = "" }) => {
 						description={post.description}
 					/>
 					<ReadMore />
-					<div className="flex flex-wrap items-center mb-3 space-x-2 text-sm text-gray-600 dark:text-gray-400">
-						<PostedDate created_at={post.created_at} />
-						<TagContainer tags={post.tags} />
-					</div>
+					<TagContainer tags={post.tags} />
 				</Link>
 			))}
 		</div>

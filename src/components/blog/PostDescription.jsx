@@ -7,7 +7,7 @@ const PostDescription = ({ description, content }) => {
 	};
 
 	return (
-		<p className="flex-grow leading-relaxed tracking-tight text-gray-600 dark:text-gray-300 md:text-lg">
+		<p className="flex-grow font-light leading-relaxed tracking-tight text-gray-600 dark:text-gray-300 md:text-lg">
 			{description || getExcerpt(content)}
 		</p>
 	);

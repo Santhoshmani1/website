@@ -26,7 +26,7 @@ const Home = () => {
 			<ScrollProgress />
 			<Header />
 			<SpaceContainer />
-			<main className="flex flex-col justify-start px-4 text-sm bg-black text-slate-300 bg-grid-12-s-2-neutral-950 md:text-xl">
+			<main className="flex flex-col justify-start px-4 text-sm font-light bg-black text-slate-300 bg-grid-12-s-2-neutral-950 md:text-xl">
 				<section className="z-10 w-11/12 mx-auto leading-relaxed sm:w-2/3">
 					<h2 className="py-6 text-3xl font-semibold tracking-tighter md:text-6xl">
 						Hi, I&apos;m Santhosh

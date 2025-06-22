@@ -16,7 +16,7 @@ const Contact = () => {
 					</h2>
 					<div className="w-16 h-px mx-auto mb-6 bg-gradient-to-r from-transparent via-sky-400 to-transparent"></div>
 
-					<p className="text-sm font-light text-gray-400">
+					<p className="text-sm font-light text-gray-400 md:text-base">
 						Whether you have a question, want to collaborate, or just want to
 						say hi, feel free to drop me a message from my socials. While I
 						maintain a minimal social media presence, I respond via email
