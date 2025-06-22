@@ -16,20 +16,8 @@ async function fetchPosts() {
 		throw error;
 	}
 
-	// Process posts if needed (e.g., parse tags, format dates, etc.)
-	if (posts) {
-		// Extract all unique tags from posts
-		const tags = new Set();
-		posts.forEach((post) => {
-			if (post.tags && Array.isArray(post.tags)) {
-				post.tags.forEach((tag) => tags.add(tag));
-			}
-		});
 
-		return posts;
-	}
-
-	return [];
+	return posts || [];
 }
 
 export { fetchPosts };
