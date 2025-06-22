@@ -20,7 +20,7 @@ const socials = [
 	},
 	{
 		name: "X",
-		url: "https://x.com/santhoshmani1",
+		url: "https://x.com/SanthoshMani_P",
 		icon: <FaSquareXTwitter />,
 	},
 ];
