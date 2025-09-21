@@ -9,7 +9,8 @@ import {
 	SpaceContainer,
 } from "../components";
 import "../styles/blogpost.css";
-import { fetchPosts } from "../api/posts";
+import { fetchPosts } from "../api/getposts";
+import { fetchAllTags, fetchPostTags } from "../api/getposttags";
 
 const Blog = () => {
 	const [blogPosts, setBlogPosts] = useState([]);
@@ -26,15 +27,8 @@ const Blog = () => {
 				const postsData = await fetchPosts();
 				setBlogPosts(postsData);
 
-				// Extract all unique tags
-				const tagsSet = new Set();
-				postsData.forEach((post) => {
-					if (post.tags && Array.isArray(post.tags)) {
-						post.tags.forEach((tag) => tagsSet.add(tag));
-					}
-				});
-
-				setAllTags([...tagsSet]);
+				const tagsData = await fetchAllTags();
+				setAllTags(tagsData.map(tag => tag.tag_name));
 			} catch (error) {
 				console.error("Error fetching posts:", error);
 			} finally {

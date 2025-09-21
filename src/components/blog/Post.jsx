@@ -1,5 +1,4 @@
 import { marked } from "marked";
-import { FiArrowLeft } from "react-icons/fi";
 import { useEffect, useState, useRef } from "react";
 import { Link, useParams } from "react-router-dom";
 
@@ -12,6 +11,7 @@ import NoPostsFound from "./NoPostsFound";
 import TableOfContents from "./TableOfContents";
 import ReadingTime from "./ReadingTime";
 import { fetchPost } from "../../api/getpost";
+import { fetchPostTags } from "../../api/getposttags";
 
 marked.use({
 	headerIds: true,
@@ -23,21 +23,29 @@ const Post = () => {
 	const [loading, setLoading] = useState(true);
 	const [toc, setToc] = useState([]);
 	const [showToc, setShowToc] = useState(false);
+	const [tags, setTags] = useState([]);
 	const contentRef = useRef(null);
 	const { id } = useParams();
 
 	useEffect(() => {
-		setLoading(true);
-		fetchPost({ id })
-			.then((data) => {
-				setPost(data);
-			})
-			.catch((error) => {
-				console.error("Error fetching post:", error);
-			})
-			.finally(() => {
+		const getPostData = async () => {
+			try {
+				setLoading(true);
+				// Fetch post and tags in parallel for better performance
+				const [postData, tagsData] = await Promise.all([
+					fetchPost({ id }),
+					fetchPostTags({ id }),
+				]);
+				setPost(postData);
+				setTags(tagsData || []);
+			} catch (error) {
+				console.error("Error fetching post data:", error);
+			} finally {
 				setLoading(false);
-			});
+			}
+		};
+
+		getPostData();
 	}, [id]);
 
 	useEffect(() => {
@@ -123,7 +131,7 @@ const Post = () => {
 						<div className="flex flex-wrap items-center space-x-4 text-sm text-gray-600 dark:text-gray-400">
 							<PostedDate created_at={post.created_at} />
 							<ReadingTime text={post.content} />
-							<TagContainer tags={post.tags} />
+							<TagContainer tags={tags.map((tag) => tag.tag_name)} />
 						</div>
 					</div>
 

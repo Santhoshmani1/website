@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { fetchPosts } from "../api/posts";
+import { fetchPosts } from "../api/getposts";
 
 const RecentPosts = () => {
 	const [recentPosts, setRecentPosts] = useState([]);

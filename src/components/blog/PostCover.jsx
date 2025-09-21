@@ -15,7 +15,7 @@ const PostCover = ({ blogPosts, searchTerm = "", selectedTag = "" }) => {
 			post.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
 			post.description?.toLowerCase().includes(searchTerm.toLowerCase());
 
-		const matchesTag = selectedTag === "" || (post.tags?.includes(selectedTag));
+		const matchesTag = selectedTag === "" || post.tags?.includes(selectedTag);
 		return matchesSearch && matchesTag;
 	});
 
@@ -29,11 +29,11 @@ const PostCover = ({ blogPosts, searchTerm = "", selectedTag = "" }) => {
 				<Link
 					to={`/blog/${post.id}`}
 					key={post.id}
-					className="flex flex-col h-full overflow-hidden transition-all duration-300 blog-card my-4">
+					className="flex flex-col h-full my-4 overflow-hidden transition-all duration-300 blog-card">
 					<h3 className="text-xl font-bold tracking-tight text-blue-400 lg:text-3xl hover:underline">
 						{post.title}
 					</h3>
-					<div className="flex flex-row space-x-3 text-sm text-gray-600 dark:text-gray-200 pt-2 md:pt-4">
+					<div className="flex flex-row pt-2 space-x-3 text-sm text-gray-600 dark:text-gray-200 md:pt-4">
 						<PostedDate created_at={post.created_at} />
 						<ReadingTime text={post.content} />
 					</div>
@@ -47,7 +47,7 @@ const PostCover = ({ blogPosts, searchTerm = "", selectedTag = "" }) => {
 						description={post.description}
 					/>
 					<ReadMore />
-					<TagContainer tags={post.tags} />
+					<TagContainer tags={post.tags || []} />
 				</Link>
 			))}
 		</div>
