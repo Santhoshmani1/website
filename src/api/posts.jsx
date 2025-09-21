@@ -11,11 +11,12 @@ async function fetchPosts() {
 		.select("*")
 		.order("created_at", { ascending: false });
 
+	console.log("Fetched posts data:", posts);
+
 	if (error) {
 		console.error("Error fetching posts:", error);
 		throw error;
 	}
-
 
 	return posts || [];
 }
