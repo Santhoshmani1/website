@@ -32,8 +32,9 @@ const Header = () => {
 					</div>
 					<div></div>
 					<button
-						className="material-icons sm:hidden border border-sky-700 rounded-full p-1 bg-gray-950"
-						title="menu" type="button"
+						className="p-1 border rounded-full material-icons sm:hidden border-sky-700 bg-gray-950"
+						title="menu"
+						type="button"
 						onClick={() => {
 							setIsOpen(!isOpen);
 							setMenuIcon(isOpen ? "menu" : "close");
