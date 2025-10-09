@@ -76,42 +76,38 @@ const Blog = () => {
 						id="blog">
 						Blog
 					</h2>
-
-					<div className="flex flex-col items-center justify-between gap-4 my-8 md:flex-row md:justify-between">
-						<div className="relative w-full md:w-1/2">
-							<FiSearch className="absolute text-gray-400 transform -translate-y-1/2 top-1/2 left-3" />
+					<div className="flex flex-col items-center justify-between gap-6 my-12 md:flex-row">
+						<div className="relative w-full md:flex-1">
+							<FiSearch className="absolute text-gray-500 transform -translate-y-1/2 top-1/2 left-4" />
 							<input
 								type="text"
 								placeholder="Search posts..."
 								value={searchTerm}
 								onChange={(e) => setSearchTerm(e.target.value)}
-								className="w-full px-12 py-3 text-white border border-gray-300 rounded-2xl search-input bg-gray-950 focus:outline-none"
+								className="w-full py-3 pl-12 pr-4 text-white transition-colors duration-300 border border-gray-800 rounded-full shadow-lg bg-gray-900/50 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-sky-500/50 focus:border-sky-500"
 							/>
 						</div>
 
-						<div className="flex flex-col items-center justify-between w-full gap-4 md:w-1/2">
-							<div className="flex items-center space-x-2">
-								<span className="text-sm font-bold text-gray-300">Sort:</span>
-								<button type="button"
-									onClick={() =>
-										setSortDirection(sortDirection === "desc" ? "asc" : "desc")
-									}
-									className="flex items-center px-6 py-1.5 space-x-1 text-lg border border-gray-300 rounded-2xl hover:bg-gray-800">
-									<span className="text-sm">Date</span>
-									{sortDirection === "desc" ? (
-										<FiArrowDown className="text-white" />
-									) : (
-										<FiArrowUp className="text-white" />
-									)}
-								</button>
-							</div>
+						<div className="flex items-center justify-center w-full gap-6 md:w-auto md:justify-end">
+							<button
+								type="button"
+								onClick={() => setSortDirection(sortDirection === "desc" ? "asc" : "desc")}
+								className="flex items-center justify-center gap-2 px-4 py-3 text-sm text-gray-300 transition-colors duration-300 border border-gray-800 rounded-full shadow-lg bg-gray-900/50 backdrop-blur-sm hover:bg-gray-800/70 hover:text-white focus:outline-none focus:ring-2 focus:ring-sky-500/50 focus:border-sky-500"
+							>
+								<span>Date</span>
+								{sortDirection === "desc" ? (
+									<FiArrowDown className="w-4 h-4" />
+								) : (
+									<FiArrowUp className="w-4 h-4" />
+								)}
+							</button>
 
-							<div className="flex items-center space-x-2">
-								<span className="text-sm font-bold text-gray-300">Filter:</span>
+							<div className="relative">
 								<select
 									value={selectedTag}
 									onChange={(e) => setSelectedTag(e.target.value)}
-									className="px-2 md:text-lg rounded-2xl py-1.5 border bg-gray-900 border-gray-700 text-white focus:outline-none focus:border-black text-sm">
+									className="w-full px-4 py-3 text-sm text-gray-300 transition-colors duration-300 border border-gray-800 rounded-full appearance-none cursor-pointer bg-gray-900/50 backdrop-blur-sm hover:bg-gray-800/70 hover:text-white focus:outline-none focus:ring-2 focus:ring-sky-500/50 focus:border-sky-500"
+								>
 									<option value="">All</option>
 									{allTags.map((tag) => (
 										<option key={tag} value={tag}>
@@ -119,6 +115,9 @@ const Blog = () => {
 										</option>
 									))}
 								</select>
+								<div className="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none">
+									<svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+								</div>
 							</div>
 						</div>
 					</div>

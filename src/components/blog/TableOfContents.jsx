@@ -1,7 +1,7 @@
 import { FiList } from "react-icons/fi";
 import { useState } from "react";
 
-const TableOfContents = ({ toc, className, isDesktop = false, scrollToHeading }) => {
+const TableOfContents = ({ toc, className, isDesktop = false, scrollToHeading, activeHeading }) => {
     const [isOpen, setIsOpen] = useState(true);
 
     if (!toc || toc.length === 0) return null;
@@ -9,7 +9,7 @@ const TableOfContents = ({ toc, className, isDesktop = false, scrollToHeading })
     // For desktop, always show the TOC content
     const contentClass = isDesktop
         ? "block"
-        : `overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96' : 'max-h-0'}`;
+        : `overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-screen' : 'max-h-0'}`;
 
     return (
         <div className={`${className} ${isDesktop ? 'blog-toc-container' : 'p-4 mb-8 bg-gray-900 border border-gray-800 rounded-md'}`}>
@@ -34,8 +34,10 @@ const TableOfContents = ({ toc, className, isDesktop = false, scrollToHeading })
                                 href={`#${item.id}`}
                                 onClick={(e) => scrollToHeading(e, item.id)}
                                 className={`
-                  text-sm hover:text-sky-400 transition-colors text-wrap flex-wrap flex
-                  ${item.level === 1 ? 'text-white font-medium' : 'text-gray-400 font-light'}
+                                    text-sm hover:text-sky-400 transition-colors text-wrap flex-wrap flex
+                                    ${activeHeading === item.id ? 'text-sky-400' :
+                                        (item.level === 1 ? 'text-white font-medium' : 'text-gray-400 font-light')
+                                    }
                 `}
                             >
                                 {item.text}

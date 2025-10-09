@@ -1,5 +1,5 @@
 import { marked } from "marked";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useLayoutEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import { Header, Footer, SpaceContainer, ScrollProgress } from "..";
@@ -23,6 +23,7 @@ const Post = () => {
 	const [loading, setLoading] = useState(true);
 	const [toc, setToc] = useState([]);
 	const [showToc, setShowToc] = useState(false);
+	const [activeHeading, setActiveHeading] = useState("");
 	const [tags, setTags] = useState([]);
 	const contentRef = useRef(null);
 	const { id } = useParams();
@@ -48,31 +49,68 @@ const Post = () => {
 		getPostData();
 	}, [id]);
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		if (post?.content && contentRef.current) {
-			setTimeout(() => {
-				const headings = contentRef.current.querySelectorAll("h1, h2, h3");
-				const tocItems = [];
+			const headings = contentRef.current.querySelectorAll("h1, h2, h3");
+			const tocItems = [];
 
-				headings.forEach((heading, index) => {
-					if (parseInt(heading.tagName[1]) > 3) return;
+			headings.forEach((heading, index) => {
+				if (parseInt(heading.tagName[1]) > 3) return;
 
-					if (!heading.id) {
-						heading.id = `heading-${index}`;
-					}
+				if (!heading.id) {
+					heading.id = `heading-${index}`;
+				}
 
-					tocItems.push({
-						id: heading.id,
-						text: heading.textContent,
-						level: parseInt(heading.tagName[1]),
-					});
+				tocItems.push({
+					id: heading.id,
+					text: heading.textContent,
+					level: parseInt(heading.tagName[1]),
 				});
+			});
 
-				setToc(tocItems);
-				setShowToc(tocItems.length > 0);
-			}, 100);
+			setToc(tocItems);
+			setShowToc(tocItems.length > 0);
 		}
 	}, [post?.content]);
+
+	useEffect(() => {
+		if (toc.length === 0) return;
+
+		let throttleTimeout = null;
+
+		const handleScroll = () => {
+			if (throttleTimeout) {
+				return;
+			}
+
+			throttleTimeout = setTimeout(() => {
+				const header = document.querySelector("header");
+				const headerHeight = header ? header.offsetHeight : 0;
+				const scrollOffset = headerHeight + 40; // Extra offset for better accuracy to account for header height
+
+				let currentActiveId = "";
+				for (let i = toc.length - 1; i >= 0; i--) {
+					const item = toc[i];
+					const element = document.getElementById(item.id);
+					if (element && element.getBoundingClientRect().top < scrollOffset) {
+						currentActiveId = item.id;
+						break;
+					}
+				}
+
+				if (!currentActiveId && toc.length > 0) {
+					currentActiveId = toc[0].id;
+				}
+
+				setActiveHeading(currentActiveId);
+				throttleTimeout = null;
+			}, 100); 
+		};
+
+		window.addEventListener("scroll", handleScroll);
+		handleScroll();
+		return () => window.removeEventListener("scroll", handleScroll);
+	}, [toc]);
 
 	const scrollToHeading = (e, id) => {
 		e.preventDefault();
@@ -135,14 +173,8 @@ const Post = () => {
 						</div>
 					</div>
 
-					{showToc && (
-						<div className="blog-toc-mobile">
-							<TableOfContents toc={toc} scrollToHeading={scrollToHeading} />
-						</div>
-					)}
-
-					<div className="px-6 blog-layout">
-						<div className="blog-content-with-toc">
+					<div className="relative lg:grid lg:grid-cols-4 lg:gap-12">
+						<div className="lg:col-span-3">
 							<div
 								ref={contentRef}
 								className="font-light prose prose-lg max-w-none dark:prose-invert prose-headings:font-bold prose-a:text-black dark:prose-a:text-white prose-a:underline"
@@ -150,6 +182,23 @@ const Post = () => {
 									__html: post.content ? marked(post.content) : "",
 								}}
 							/>
+						</div>
+						<div className="hidden lg:block">
+							{showToc && (
+								<div className="sticky top-24">
+									<aside className="overflow-y-auto max-h-[calc(100vh-6rem)]">
+										<h2 className="mb-4 text-lg font-semibold">
+											Table of Contents
+										</h2>
+										<TableOfContents
+											toc={toc}
+											scrollToHeading={scrollToHeading}
+											activeHeading={activeHeading}
+											isDesktop={true}
+										/>
+									</aside>
+								</div>
+							)}
 						</div>
 					</div>
 				</div>
