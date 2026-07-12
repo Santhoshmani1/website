@@ -6,6 +6,7 @@ const navigationListItems = [
 	{ label: "Home", path: "/#" },
 	{ label: "Projects", path: "/#projects" },
 	{ label: "Blog", path: "/blog/#" },
+	{ label: "Music", path: "/music/#" },
 	{ label: "Github", path: "https://github.com/santhoshmani1" },
 ];
 
