@@ -58,7 +58,6 @@ const Music = () => {
 						Music Recordings
 					</h2>
 					<p className="text-center text-slate-400 text-sm mt-2 max-w-xl mx-auto font-light">
-						A collection of piano and flute practice takes, complete with interactive audio spectrum visualizers and note trackers.
 					</p>
 					
 					<div className="flex flex-col items-center justify-between gap-6 my-12 md:flex-row">

@@ -100,8 +100,8 @@
     display:flex;
     align-items:center;
     justify-content:center;
-    width:18%;
-    max-width:52px;
+    width:32%;
+    max-width:110px;
     aspect-ratio:1;
     opacity:0;
     transition:opacity .3s ease;
@@ -161,6 +161,42 @@
     transition:border-color .15s, color .15s;
   }
   .mode-pill:hover{border-color:var(--blue); color:var(--blue-bright);}
+
+  .mode-selector{
+    display:flex;
+    gap:4px;
+    background:rgba(3,3,8,0.6);
+    padding:3px;
+    border-radius:99px;
+    border:1px solid var(--line);
+    pointer-events:auto;
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+  }
+  .mode-opt{
+    font-family:var(--mono);
+    font-size:9px;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:var(--ink-dim);
+    background:transparent;
+    border:1px solid transparent;
+    padding:4px 10px;
+    border-radius:99px;
+    cursor:pointer;
+    user-select:none;
+    transition:all 0.2s ease;
+    font-weight:500;
+  }
+  .mode-opt:hover{
+    color:var(--blue-bright);
+    background:rgba(255,255,255,0.03);
+  }
+  .mode-opt.active{
+    background:rgba(0,229,255,0.12);
+    color:var(--blue-bright);
+    border-color:rgba(0,229,255,0.3);
+  }
 
   /* center play overlay (poster state, like a video thumbnail) */
   .poster-play{
@@ -225,27 +261,41 @@
     -webkit-appearance:none;
     appearance:none;
     flex:1;
-    height:3px;
-    border-radius:2px;
+    height:4px;
+    border-radius:99px;
     background:var(--line);
     outline:none;
     cursor:pointer;
+    transition:height 0.2s ease;
+  }
+  input[type="range"]:hover{
+    height:6px;
   }
   input[type="range"]::-webkit-slider-thumb{
     -webkit-appearance:none;
-    width:11px; height:11px;
+    width:12px; height:12px;
     border-radius:50%;
     background:var(--blue-bright);
-    box-shadow:0 0 0 3px rgba(94,200,255,0.24);
+    box-shadow:0 0 8px rgba(0, 229, 255, 0.6), 0 0 0 3px rgba(94,200,255,0.24);
     cursor:pointer;
+    transition:transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  input[type="range"]::-webkit-slider-thumb:hover{
+    transform:scale(1.25);
+    box-shadow:0 0 12px rgba(0, 229, 255, 0.9), 0 0 0 4px rgba(94,200,255,0.3);
   }
   input[type="range"]::-moz-range-thumb{
-    width:11px; height:11px;
+    width:12px; height:12px;
     border-radius:50%;
     background:var(--blue-bright);
     border:none;
-    box-shadow:0 0 0 3px rgba(94,200,255,0.24);
+    box-shadow:0 0 8px rgba(0, 229, 255, 0.6), 0 0 0 3px rgba(94,200,255,0.24);
     cursor:pointer;
+    transition:transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  input[type="range"]::-moz-range-thumb:hover{
+    transform:scale(1.25);
+    box-shadow:0 0 12px rgba(0, 229, 255, 0.9), 0 0 0 4px rgba(94,200,255,0.3);
   }
   .vol{width:70px; flex:none;}
   .vol-icon{width:16px; height:16px; fill:var(--ink-dim); flex-shrink:0;}
@@ -695,7 +745,11 @@
           <span class="track-eyebrow" id="eyebrowText">Now Playing</span>
           <div class="track-title" id="titleText">Untitled Recording</div>
         </div>
-        <div class="mode-pill" id="modeToggleEmbed">radial bloom</div>
+        <div class="mode-selector" id="modeSelectorEmbed">
+          <button type="button" class="mode-opt" data-mode="radial" title="Radial Bloom">radial</button>
+          <button type="button" class="mode-opt" data-mode="bars" title="Ion Bars">bars</button>
+          <button type="button" class="mode-opt" data-mode="wave" title="Violet Wave">wave</button>
+        </div>
       </div>
       <div class="poster-play" id="posterPlay">
         <div class="ring">
@@ -950,15 +1004,24 @@
     const statusLine = root.querySelector('#statusLine');
     const titleText = root.querySelector('#titleText');
     const eyebrowText = root.querySelector('#eyebrowText');
-    const modePill = root.querySelector('#modeToggleEmbed');
+    const modeSelector = root.querySelector('#modeSelectorEmbed');
     const centerIcon = root.querySelector('#centerIcon');
 
     if (titleText) titleText.textContent = opts.title || "Untitled Recording";
-    if (modePill) modePill.textContent = modeLabel(mode);
+    updateModeSelector();
     updateCenterIcon();
 
-    function modeLabel(m){
-      return m === 'bars' ? 'ion bars' : m === 'wave' ? 'violet wave' : 'radial bloom';
+    function updateModeSelector(){
+      if (!modeSelector) return;
+      const buttons = modeSelector.querySelectorAll('.mode-opt');
+      buttons.forEach(btn => {
+        const btnMode = btn.getAttribute('data-mode');
+        if (btnMode === mode) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
     }
 
     function updateCenterIcon(){
@@ -1081,8 +1144,8 @@
 
     function drawRadial(w,h){
       const cx = w/2, cy = h/2;
-      const baseR = Math.min(w,h) * 0.16;
-      const maxR = Math.min(w,h) * 0.42;
+      const baseR = Math.min(w,h) * 0.35;
+      const maxR = Math.min(w,h) * 0.60;
       const bars = 64;
 
       // progress ring
@@ -1108,12 +1171,11 @@
       ctx2d.stroke();
 
       for (let i=0; i<bars; i++){
-        // Horizontal symmetry (butterfly bloom):
-        // Bass (low index) at left (i=32) and right (i=0/64) sides.
-        // Treble (high index) at top (i=16) and bottom (i=48) sides.
-        const dist = i % 32;
-        const activeIndex = dist < 16 ? dist : (31 - dist);
-        const idx = Math.floor(activeIndex * 2.2); // Maps 0-15 to active bins 0-33
+        // 4-way symmetry mapping only lower/active frequency bins (0 to 14)
+        // to prevent silent treble zones and avoid gaps around the circle
+        const dist = i % 16;
+        const activeIndex = dist < 8 ? dist : (15 - dist);
+        const idx = Math.floor(activeIndex * 2.0); // Maps 0-7 to active bins 0-14
         const v = dataArray[idx] / 255;
         
         const angle = (i / bars) * Math.PI * 2;
@@ -1190,10 +1252,16 @@
       durTime.textContent = fmtTime(audio.duration);
       setStatus('');
     });
+    function updateSliderProgress(slider, minColor = '#00E5FF', maxColor = '#E040FB', bgColor = 'rgba(0, 229, 255, 0.12)') {
+      const val = (slider.value - slider.min) / (slider.max - slider.min) * 100;
+      slider.style.background = `linear-gradient(to right, ${minColor} 0%, ${maxColor} ${val}%, ${bgColor} ${val}%, ${bgColor} 100%)`;
+    }
+
     audio.addEventListener('timeupdate', ()=>{
       curTime.textContent = fmtTime(audio.currentTime);
       if (audio.duration){
         seek.value = (audio.currentTime / audio.duration) * 100;
+        updateSliderProgress(seek);
       }
     });
     audio.addEventListener('ended', ()=>{
@@ -1207,16 +1275,30 @@
       if (audio.duration){
         audio.currentTime = (seek.value/100) * audio.duration;
       }
+      updateSliderProgress(seek);
     });
-    vol.addEventListener('input', ()=>{ audio.volume = parseFloat(vol.value); });
+    vol.addEventListener('input', ()=>{
+      audio.volume = parseFloat(vol.value);
+      updateSliderProgress(vol);
+    });
     audio.volume = parseFloat(vol.value);
 
-    if (modePill){
-      const order = ['radial','bars','wave'];
-      modePill.addEventListener('click', ()=>{
-        mode = order[(order.indexOf(mode)+1) % order.length];
-        modePill.textContent = modeLabel(mode);
-        updateCenterIcon();
+    // Initial slider styling
+    updateSliderProgress(seek);
+    updateSliderProgress(vol);
+
+    if (modeSelector){
+      const buttons = modeSelector.querySelectorAll('.mode-opt');
+      buttons.forEach(btn => {
+        btn.addEventListener('click', (e)=>{
+          e.stopPropagation();
+          const targetMode = btn.getAttribute('data-mode');
+          if (targetMode && targetMode !== mode) {
+            mode = targetMode;
+            updateModeSelector();
+            updateCenterIcon();
+          }
+        });
       });
     }
 
@@ -1441,7 +1523,7 @@
       ctx2d.clearRect(0,0,w,h);
       if (mode === 'radial') {
         // draw a static ring even with no data
-        const cx=w/2, cy=h/2, r = Math.min(w,h)*0.16;
+        const cx=w/2, cy=h/2, r = Math.min(w,h)*0.30;
         ctx2d.strokeStyle = '#5EC8FF';
         ctx2d.beginPath(); ctx2d.arc(cx,cy,r,0,Math.PI*2); ctx2d.stroke();
       }
@@ -1611,7 +1693,11 @@
             <span class="track-eyebrow" id="eyebrowText">Now Playing</span>
             <div class="track-title" id="titleText">Untitled Recording</div>
           </div>
-          <div class="mode-pill" id="modeToggleEmbed">radial bloom</div>
+          <div class="mode-selector" id="modeSelectorEmbed">
+            <button type="button" class="mode-opt" data-mode="radial" title="Radial Bloom">radial</button>
+            <button type="button" class="mode-opt" data-mode="bars" title="Ion Bars">bars</button>
+            <button type="button" class="mode-opt" data-mode="wave" title="Violet Wave">wave</button>
+          </div>
         </div>
         <div class="poster-play" id="posterPlay">
           <div class="ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>

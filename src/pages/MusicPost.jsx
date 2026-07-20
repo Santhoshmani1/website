@@ -25,6 +25,17 @@ const MusicPost = () => {
 		setLoading(false);
 	}, [id]);
 
+	// Sort tracks by created_at descending (newest first)
+	const sortedTracks = [...musicTracks].sort(
+		(a, b) => new Date(b.created_at) - new Date(a.created_at)
+	);
+	const currentIndex = sortedTracks.findIndex((t) => t.id === id);
+	const prevTrack = currentIndex > 0 ? sortedTracks[currentIndex - 1] : null;
+	const nextTrack =
+		currentIndex !== -1 && currentIndex < sortedTracks.length - 1
+			? sortedTracks[currentIndex + 1]
+			: null;
+
 	// Global keyboard controls to play/pause (Space) and seek (Left/Right arrows)
 	useEffect(() => {
 		const handleGlobalKeyDown = (e) => {
@@ -132,12 +143,7 @@ const MusicPost = () => {
 
 					{/* Embedded Interactive Visualizer Player */}
 					<div className="relative mb-8 rounded-xl overflow-hidden border border-gray-800 bg-gray-950/80 shadow-2xl">
-						<div className="absolute top-2 left-3 z-10 flex items-center gap-1.5 pointer-events-none">
-							<span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-							<span className="text-[10px] uppercase font-bold tracking-wider text-emerald-400 font-sans">
-								Live Sound Bloom Engine
-							</span>
-						</div>
+						
 						<iframe
 							src={playerUrl}
 							width="100%"
@@ -150,13 +156,48 @@ const MusicPost = () => {
 					</div>
 
 					{/* Description & Performance Notes */}
-					<div className="mt-8">
+					<div className="mt-8 pb-8 border-b border-gray-900">
 						<h2 className="text-lg font-bold text-sky-400 border-b border-gray-900 pb-2 mb-3">
 							Performance Notes
 						</h2>
 						<p className="text-slate-300 font-light leading-relaxed text-sm">
 							{track.description}
 						</p>
+					</div>
+
+					{/* Navigation between recordings */}
+					<div className="grid grid-cols-1 gap-4 mt-8 sm:grid-cols-2">
+						{prevTrack ? (
+							<Link
+								to={`/music/${prevTrack.id}`}
+								className="group flex flex-col justify-between p-4 rounded-xl border border-gray-800 bg-gray-950/40 hover:bg-gray-900/40 hover:border-sky-500/50 transition-all duration-300 text-left cursor-pointer"
+							>
+								<div className="text-[10px] text-slate-500 uppercase tracking-widest font-semibold mb-1">
+									&larr; Previous Recording
+								</div>
+								<div className="text-sm font-semibold text-slate-200 group-hover:text-sky-300 transition-colors duration-300 truncate">
+									{prevTrack.title}
+								</div>
+							</Link>
+						) : (
+							<div className="hidden sm:block" />
+						)}
+
+						{nextTrack ? (
+							<Link
+								to={`/music/${nextTrack.id}`}
+								className="group flex flex-col justify-between p-4 rounded-xl border border-gray-800 bg-gray-950/40 hover:bg-gray-900/40 hover:border-sky-500/50 transition-all duration-300 text-right cursor-pointer"
+							>
+								<div className="text-[10px] text-slate-500 uppercase tracking-widest font-semibold mb-1">
+									Next Recording &rarr;
+								</div>
+								<div className="text-sm font-semibold text-slate-200 group-hover:text-sky-300 transition-colors duration-300 truncate">
+									{nextTrack.title}
+								</div>
+							</Link>
+						) : (
+							<div className="hidden sm:block" />
+						)}
 					</div>
 
 				</div>
