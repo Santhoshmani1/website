@@ -158,7 +158,7 @@ const MusicPost = () => {
 					{/* Description & Performance Notes */}
 					<div className="mt-8 pb-8 border-b border-gray-900">
 						<h2 className="text-lg font-bold text-sky-400 border-b border-gray-900 pb-2 mb-3">
-							Performance Notes
+							 Notes
 						</h2>
 						<p className="text-slate-300 font-light leading-relaxed text-sm">
 							{track.description}

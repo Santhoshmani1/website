@@ -61,8 +61,8 @@ const MusicCover = ({ tracks, searchTerm = "", selectedTag = "" }) => {
 						{/* Subtle Grid overlay */}
 						<div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:10px_10px]" />
 						
-						{/* Instrument icon / label */}
-						<div className="relative z-10 flex flex-col items-center gap-2">
+						{/* Instrument icon / label - Fades out on hover to prevent overlap */}
+						<div className="relative z-10 flex flex-col items-center gap-2 transition-opacity duration-300 group-hover:opacity-0">
 							{track.instrument === "Piano" ? (
 								<svg
 									className="w-12 h-12 text-amber-400 filter drop-shadow-[0_0_8px_rgba(251,191,36,0.3)]"
@@ -99,8 +99,8 @@ const MusicCover = ({ tracks, searchTerm = "", selectedTag = "" }) => {
 							</span>
 						</div>
 
-						{/* Interactive Hover Play overlay */}
-						<div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+						{/* Interactive Hover Play overlay - Fades in on hover */}
+						<div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-20">
 							<div className="w-10 h-10 rounded-full border border-sky-400 flex items-center justify-center bg-gray-950/80 backdrop-blur-sm transform scale-90 group-hover:scale-100 transition-transform duration-300">
 								<svg
 									className="w-5 h-5 text-sky-400 fill-current ml-0.5"
@@ -121,7 +121,7 @@ const MusicCover = ({ tracks, searchTerm = "", selectedTag = "" }) => {
 								<span className="text-sky-400/80">{track.instrument} Recording</span>
 							</div>
 							
-							<h3 className="text-xl font-bold tracking-tight text-slate-100 lg:text-2xl mt-2 hover:text-sky-400 transition-colors duration-200">
+							<h3 className="text-xl font-bold tracking-tight text-slate-100 lg:text-2xl mt-2 group-hover:text-sky-400 hover:text-sky-400 transition-colors duration-200">
 								{track.title}
 							</h3>
 							

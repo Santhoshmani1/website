@@ -100,8 +100,8 @@
     display:flex;
     align-items:center;
     justify-content:center;
-    width:32%;
-    max-width:110px;
+    width:20%;
+    max-width:65px;
     aspect-ratio:1;
     opacity:0;
     transition:opacity .3s ease;
@@ -1086,28 +1086,30 @@
     }
 
     function drawBars(w,h){
-      const barCount = 48;
+      const isMobile = w < 768;
+      const barCount = isMobile ? 24 : 48;
       const gap = 3;
       const bw = (w / barCount) - gap;
       let x = 0;
       const half = barCount / 2;
+
+      // Set stateful shadow once outside loop, disabled entirely on mobile for performance
+      ctx2d.shadowBlur = isMobile ? 0 : 6;
+      ctx2d.shadowColor = 'rgba(0, 229, 255, 0.35)';
+
       for (let i=0; i<barCount; i++){
         // Symmetrical layout: tallest (bass) in the center, shortest (treble) at the edges
         const distFromCenter = Math.abs(i - (half - 0.5));
-        const activeIndex = Math.floor(distFromCenter); // 0 in center, 23 at edges
-        // Map to active frequency range (bins 0 to 34)
-        const idx = Math.floor(activeIndex * 1.5);
+        const activeIndex = Math.floor(distFromCenter);
+        // Map to active frequency range
+        const idx = Math.floor(activeIndex * (isMobile ? 3.0 : 1.5));
         const v = dataArray[idx] / 255;
         const bh = Math.max(2, v * h * 0.82);
         
         const grad = ctx2d.createLinearGradient(0, h-bh, 0, h);
-        grad.addColorStop(0, '#E040FB'); // Neon Purple/Magenta at top
-        grad.addColorStop(1, '#00E5FF'); // Cyan at bottom
+        grad.addColorStop(0, '#E040FB');
+        grad.addColorStop(1, '#00E5FF');
         ctx2d.fillStyle = grad;
-        
-        // Symmetrical glowing shadow
-        ctx2d.shadowBlur = 8;
-        ctx2d.shadowColor = 'rgba(0, 229, 255, 0.35)';
         
         roundRect(ctx2d, x, h-bh, bw, bh, 3);
         ctx2d.fill();
@@ -1117,15 +1119,21 @@
     }
 
     function drawWave(w,h){
+      const isMobile = w < 768;
       analyser.getByteTimeDomainData(dataArray);
       ctx2d.lineWidth = 3;
       ctx2d.strokeStyle = '#E040FB';
-      ctx2d.shadowBlur = 12;
+      
+      // Turn off shadow blur on mobile for high frame rates
+      ctx2d.shadowBlur = isMobile ? 0 : 10;
       ctx2d.shadowColor = 'rgba(224, 64, 251, 0.6)';
       ctx2d.beginPath();
-      const slice = w / bufferLength;
+      
+      // Sample half the bins on mobile to draw half the lines
+      const step = isMobile ? 2 : 1;
+      const slice = (w / bufferLength) * step;
       let x = 0;
-      for (let i=0; i<bufferLength; i++){
+      for (let i=0; i<bufferLength; i+=step){
         const v = dataArray[i] / 128.0;
         const y = (v * h) / 2;
         if (i===0) ctx2d.moveTo(x,y); else ctx2d.lineTo(x,y);
@@ -1144,9 +1152,14 @@
 
     function drawRadial(w,h){
       const cx = w/2, cy = h/2;
-      const baseR = Math.min(w,h) * 0.35;
-      const maxR = Math.min(w,h) * 0.60;
-      const bars = 64;
+      const isMobile = w < 768;
+      
+      // Substantially decreased size to fit beautifully on mobile displays without clipping
+      const baseR = Math.min(w,h) * 0.22;
+      const maxR = Math.min(w,h) * 0.40;
+      
+      // Reduce drawn bars on mobile to keep drawings fast
+      const bars = isMobile ? 36 : 64;
 
       // progress ring
       const dur = audio.duration || 0;
@@ -1154,28 +1167,34 @@
       ctx2d.strokeStyle = 'rgba(224, 64, 251, 0.12)';
       ctx2d.lineWidth = 1.5;
       ctx2d.beginPath();
-      ctx2d.arc(cx,cy, baseR - 14, 0, Math.PI*2);
+      ctx2d.arc(cx,cy, baseR - 10, 0, Math.PI*2);
       ctx2d.stroke();
       ctx2d.strokeStyle = '#00E5FF';
       ctx2d.beginPath();
-      ctx2d.arc(cx,cy, baseR - 14, -Math.PI/2, -Math.PI/2 + progress*Math.PI*2);
+      ctx2d.arc(cx,cy, baseR - 10, -Math.PI/2, -Math.PI/2 + progress*Math.PI*2);
       ctx2d.stroke();
 
       // center hole
       ctx2d.fillStyle = '#0A0A0C';
       ctx2d.beginPath();
-      ctx2d.arc(cx,cy, baseR - 22, 0, Math.PI*2);
+      ctx2d.arc(cx,cy, baseR - 16, 0, Math.PI*2);
       ctx2d.fill();
       ctx2d.strokeStyle = 'rgba(224, 64, 251, 0.4)';
       ctx2d.lineWidth = 1;
       ctx2d.stroke();
 
+      // Set stateful shadow ONCE outside loop (disabled on mobile)
+      ctx2d.shadowBlur = isMobile ? 0 : 6;
+      ctx2d.shadowColor = 'rgba(0, 229, 255, 0.35)';
+
+      const symGroup = isMobile ? 9 : 16;
+      const symHalf = isMobile ? 4.5 : 8;
+
       for (let i=0; i<bars; i++){
-        // 4-way symmetry mapping only lower/active frequency bins (0 to 14)
-        // to prevent silent treble zones and avoid gaps around the circle
-        const dist = i % 16;
-        const activeIndex = dist < 8 ? dist : (15 - dist);
-        const idx = Math.floor(activeIndex * 2.0); // Maps 0-7 to active bins 0-14
+        // Symmetry mapping
+        const dist = i % symGroup;
+        const activeIndex = dist < symHalf ? dist : (symGroup - 1 - dist);
+        const idx = Math.floor(activeIndex * (isMobile ? 3.0 : 2.0));
         const v = dataArray[idx] / 255;
         
         const angle = (i / bars) * Math.PI * 2;
@@ -1186,13 +1205,9 @@
         const x1 = cx + Math.cos(angle)*r1;
         const y1 = cy + Math.sin(angle)*r1;
         const grad = ctx2d.createLinearGradient(x0,y0,x1,y1);
-        grad.addColorStop(0, '#E040FB'); // Neon Purple/Magenta in the center
-        grad.addColorStop(1, '#00E5FF'); // Cyan at outer tips
+        grad.addColorStop(0, '#E040FB');
+        grad.addColorStop(1, '#00E5FF');
         ctx2d.strokeStyle = grad;
-        
-        // Glowing shadow bloom
-        ctx2d.shadowBlur = 8;
-        ctx2d.shadowColor = 'rgba(0, 229, 255, 0.4)';
         
         ctx2d.lineWidth = Math.max(1.5, (Math.PI*2*baseR/bars) * 0.5);
         ctx2d.lineCap = 'round';
@@ -1523,7 +1538,7 @@
       ctx2d.clearRect(0,0,w,h);
       if (mode === 'radial') {
         // draw a static ring even with no data
-        const cx=w/2, cy=h/2, r = Math.min(w,h)*0.30;
+        const cx=w/2, cy=h/2, r = Math.min(w,h)*0.22;
         ctx2d.strokeStyle = '#5EC8FF';
         ctx2d.beginPath(); ctx2d.arc(cx,cy,r,0,Math.PI*2); ctx2d.stroke();
       }
