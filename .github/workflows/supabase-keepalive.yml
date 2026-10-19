@@ -3,7 +3,7 @@ name: Supabase Keep Alive
 
 on:
   schedule:
-    - cron: "17 3 * * *" # Daily at 8:47 AM IST
+    - cron: "30 5 * * *"
   workflow_dispatch:
 
 jobs:
@@ -24,7 +24,7 @@ jobs:
 
           # Replace your_table and id with an accessible table and column.
           curl --fail-with-body --silent --show-error \
-            "${SUPABASE_URL%/}/rest/v1/your_table?select=id&limit=1" \
+            "${SUPABASE_URL%/}/rest/v1/posts?limit=1" \
             -H "apikey: ${SUPABASE_ANON_KEY}" \
             -H "Authorization: Bearer ${SUPABASE_ANON_KEY}" \
             -o /dev/null
