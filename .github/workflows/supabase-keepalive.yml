@@ -1,0 +1,32 @@
+
+name: Supabase Keep Alive
+
+on:
+  schedule:
+    - cron: "30 5 * * *"
+  workflow_dispatch:
+
+jobs:
+  keep-alive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+
+    steps:
+      - name: Query Supabase database
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+        run: |
+          set -euo pipefail
+
+          : "${SUPABASE_URL:?Missing SUPABASE_URL secret}"
+          : "${SUPABASE_ANON_KEY:?Missing SUPABASE_ANON_KEY secret}"
+
+          # Replace your_table and id with an accessible table and column.
+          curl --fail-with-body --silent --show-error \
+            "${SUPABASE_URL%/}/rest/v1/posts?limit=1" \
+            -H "apikey: ${SUPABASE_ANON_KEY}" \
+            -H "Authorization: Bearer ${SUPABASE_ANON_KEY}" \
+            -o /dev/null
+
+          echo "Supabase database query succeeded."

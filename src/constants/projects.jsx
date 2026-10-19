@@ -1,5 +1,4 @@
 import {
-	SiCss3,
 	SiExpress,
 	SiHtml5,
 	SiJavascript,
@@ -36,7 +35,6 @@ const projects = [
 		technologies: [
 			{ name: "Javascript", color: "yellow", icon: <SiJavascript /> },
 			{ name: "HTML", color: "orange", icon: <SiHtml5 /> },
-			{ name: "CSS", color: "blue", icon: <SiCss3 /> },
 		],
 		githubSource: "https://www.github.com/santhoshmani1/Clear-space",
 		liveLink: "",
